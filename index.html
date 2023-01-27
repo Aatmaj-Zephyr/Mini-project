@@ -180,9 +180,7 @@ function notify(notifTitle,options){
 }
 
     const messaging = firebase.messaging();
-// Add the public key generated from the console here.
-messaging.getToken(messaging, {vapidKey: "BHgxjQxVuZKBKvWQTXd8ZQUPiuTJyo9q-teOcIVXxlgX9PfyREtU8cuY0V6DhWOgr9K0HQ86EdhstKFMUb_QyEQ"})
-
+requestPermission();
 function requestPermission() {
   console.log('Requesting permission...');
   Notification.requestPermission().then((permission) => {
@@ -194,7 +192,7 @@ function requestPermission() {
 
 // Get registration token. Initially this makes a network call, once retrieved
 // subsequent calls to getToken will return from cache.
-messaging.getToken({ vapidKey: 'BJPJ4Ba80OZGK3xiRceIVpfCLa0K6HsjY6jRUz4jKDX18ko9j1s4ZtLdkzhEbLmjtjKeMPkktp_YQynAeEhvVCg' })
+messaging.getToken({ vapidKey: 'BPOobAadeab_R1LR658b_M9IFuxyA6ztCq4gSy92ZwG-YyyoOcWaJEFNlE1OwCtbJVt0rVTs1_BTUPNFmdBqSm4' })
      .then((currentToken) => {
   if (currentToken) {
     // Send the token to your server and update the UI if necessary
@@ -210,7 +208,7 @@ messaging.getToken({ vapidKey: 'BJPJ4Ba80OZGK3xiRceIVpfCLa0K6HsjY6jRUz4jKDX18ko9
   console.log('An error occurred while retrieving token. ', err);
   // ...
 });
-/*
+
 messaging.onMessage((payload) => {
   console.log('[firebase-messaging-sw.js] Received background message ', payload);
   console.log("Message recieved from server")
@@ -220,10 +218,13 @@ messaging.onMessage((payload) => {
     body: 'Background Message body.',
     icon: '/firebase-logo.png'
   };
-
+document.getElementsByClassName("addEventButtonText").innerHTML="yo"
   self.registration.showNotification(notificationTitle,
     notificationOptions);
-});*/
+    document.getElementsByClassName("addEventButtonText").innerHTML="yo"
+  self.registration.showNotification(notificationTitle,
+    notificationOptions);
+}); 
 
     /*
     window.addEventListener('load', e => {
