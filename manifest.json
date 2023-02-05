@@ -1,7 +1,7 @@
 {
 "name": "testing pwa",
 "short_name": "Mini project",
-"start_url": "/index.html",
+"start_url": "index.html",
 "display": "standalone",
 "description": "This is the description of my mini project",
 "lang": "English",
@@ -24,13 +24,7 @@
         "purpose": "any"
     }
 ],
-"related_applications": [
-    {
-        "platform":"windows",
-        "url": " The URL to your app in that app store"
-    }
-],
-"prefer_related_applications": false,
+
 "shortcuts": [
     {
         "name":"The name you would like to be displayed for your shortcut",
