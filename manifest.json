@@ -17,18 +17,10 @@
         "purpose": "maskable"
     },
     {
-        "src": "https://www.pwabuilder.com/assets/icons/icon_192.png",
+        "src": "https://threeoakscs.org/wp-content/uploads/2018/01/cropped-android-icon-192x192.png",
         "sizes": "192x192",
         "type": "image/png",
         "purpose": "any"
-    }
-],
-"screenshots": [
-    {
-        "src": "https://www.pwabuilder.com/assets/screenshots/screen1.png",
-        "sizes": "2880x1800",
-        "type": "image/png",
-        "description": "A screenshot of the home page"
     }
 ],
 "related_applications": [

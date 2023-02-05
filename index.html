@@ -158,7 +158,7 @@ likesCountRef.on('value', (snapshot) => {
 
   const notifTitle = title;
   const notifBody = `New `+ type + " " + title + ' is added with ' + players;
-  const notifImg = `/images/icon-192x192.jpg`;
+  const notifImg = `https://threeoakscs.org/wp-content/uploads/2018/01/cropped-android-icon-192x192.png`;
   const options = {
     body: notifBody, //body of app
     icon: notifImg, //icon of app
@@ -166,7 +166,7 @@ likesCountRef.on('value', (snapshot) => {
   };
  
   ////////////////////////////////////////////////////////////////
-  
+
   Notification.requestPermission().then((result) => {
     if (result === 'granted') {
 notify(notifTitle,options)
