@@ -58,17 +58,17 @@
       async function registerSW() {
         console.log('Registering service worker for app');
 
-        if ('serviceWorker' in navigator) {
+       
           try {
             await navigator
                   .serviceWorker
-                  .register('https://github.com/Aatmaj-Zephyr/Mini-project/blob/main/serviceworker.js');
+                  .register('serviceworker.js');
           }
           catch (e) {
             console.log('SW registration for app failed');
             console.log(e.message);
           }
-        }
+        
       }
 
 
