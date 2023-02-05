@@ -183,6 +183,8 @@ function notify(notifTitle,options){
 
 }
 
+////////////////////////////////////////////////////////////////
+
     const messaging = firebase.messaging();
 requestPermission();
 function requestPermission() {
@@ -194,88 +196,8 @@ function requestPermission() {
   });
 }
 
-// Get registration token. Initially this makes a network call, once retrieved
-// subsequent calls to getToken will return from cache.
-messaging.getToken({ vapidKey: 'BESjtTRq1t8wn9WueljcfswYj1n0M2vA6idKAa8EoWVfpDh5YhlQxLKi4DrcCShlFzT9C6-IhdcFhIAQwtZ_KCk' })
-     .then((currentToken) => {
-  if (currentToken) {
-    // Send the token to your server and update the UI if necessary
-    // ...
-    console.log("current token exists");
-    console.log(currentToken)
-  } else {
-    // Show permission request UI
-    console.log('No registration token available. Request permission to generate one.');
-    // ...
-  }
-}).catch((err) => {
-  console.log('An error occurred while retrieving token. ', err);
-  // ...
-});
 
 
-
-
-    /*
-    window.addEventListener('load', e => {
-      subscribeToPushNotification();
-      checkIfPushIsEnabled();
-    });
-    function checkIfPushIsEnabled() {
-    //---check if push notification permission has been denied by the user---
-    if (Notification.permission === 'denied') {
-        console.log('User has blocked push notification.');
-        return;
-    }
-    //---check if push notification is supported or not---
-    if (!('PushManager' in window)) {
-        console.log('Sorry, Push notification is ' + 'not supported on this browser.');
-        return;
-    }
-    //---get push notification subscription if serviceWorker is registered and ready---
-    navigator.serviceWorker.ready
-    .then(function (registration) {
-        registration.pushManager.getSubscription()
-        .then(function (subscription) {
-            if (subscription) {
-                //---user is currently subscribed to push---
-            console.log("user is currently subscribed to push");
-            }
-            else {
-                //---user is not subscribed to push---
-                console.log("user is not subscribed to push");
-            }
-        })
-        .catch(function (error) {
-            console.error('Error occurred enabling push ', error);
-        });
-    });
-}
-    
-      function subscribeToPushNotification() {
-    navigator.serviceWorker.ready
-    .then(function(registration) {
-      console.log('Push notification subscribing.');
-
-        if (!registration.pushManager) {
-            alert('This browser does not ' + 'support push notification.');
-            return false;
-        }
-        //---to subscribe push notification using pushmanager---
-        registration.pushManager.subscribe(
-        //---always show notification when received---
-        { userVisibleOnly: true }
-        )
-        .then(function (subscription) {
-            console.log('Push notification subscribed.');
-            console.log(subscription);
-        })
-        .catch(function (error) {
-            console.log('Push notification subscription error: ', error);
-        });
-    })
-}
-*/
 </script>
 </body>
 
