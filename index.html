@@ -64,6 +64,7 @@
                   .serviceWorker.register("serviceWorker.js")
                   .then(function (registration) {
       console.log('Service worker successfully registered.');
+      console.log(registration.scope);
     })
           }
           catch (e) {
