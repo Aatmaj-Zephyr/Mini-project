@@ -165,6 +165,8 @@ likesCountRef.on('value', (snapshot) => {
     vibrate: [200, 100, 200]
   };
  
+  ////////////////////////////////////////////////////////////////
+  
   Notification.requestPermission().then((result) => {
     if (result === 'granted') {
 notify(notifTitle,options)
@@ -192,7 +194,7 @@ function requestPermission() {
 
 // Get registration token. Initially this makes a network call, once retrieved
 // subsequent calls to getToken will return from cache.
-messaging.getToken({ vapidKey: 'BPOobAadeab_R1LR658b_M9IFuxyA6ztCq4gSy92ZwG-YyyoOcWaJEFNlE1OwCtbJVt0rVTs1_BTUPNFmdBqSm4' })
+messaging.getToken({ vapidKey: 'BESjtTRq1t8wn9WueljcfswYj1n0M2vA6idKAa8EoWVfpDh5YhlQxLKi4DrcCShlFzT9C6-IhdcFhIAQwtZ_KCk' })
      .then((currentToken) => {
   if (currentToken) {
     // Send the token to your server and update the UI if necessary
@@ -209,22 +211,8 @@ messaging.getToken({ vapidKey: 'BPOobAadeab_R1LR658b_M9IFuxyA6ztCq4gSy92ZwG-Yyyo
   // ...
 });
 
-messaging.onMessage((payload) => {
-  console.log('[firebase-messaging-sw.js] Received background message ', payload);
-  console.log("Message recieved from server")
-  // Customize notification here
-  const notificationTitle = 'Background Message Title';
-  const notificationOptions = {
-    body: 'Background Message body.',
-    icon: '/firebase-logo.png'
-  };
-document.getElementsByClassName("addEventButtonText").innerHTML="yo"
-  self.registration.showNotification(notificationTitle,
-    notificationOptions);
-    document.getElementsByClassName("addEventButtonText").innerHTML="yo"
-  self.registration.showNotification(notificationTitle,
-    notificationOptions);
-}); 
+
+
 
     /*
     window.addEventListener('load', e => {
