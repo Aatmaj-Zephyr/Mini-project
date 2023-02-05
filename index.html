@@ -61,7 +61,7 @@
        
           try {
             await navigator
-                  .serviceWorker
+                  .serviceWorker.register("serviceWorker.js")
                   .then(function (registration) {
       console.log('Service worker successfully registered.');
     })
