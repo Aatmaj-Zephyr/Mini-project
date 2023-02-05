@@ -7,7 +7,7 @@ self.addEventListener("install", function (e) {
   e.waitUntil(
     caches.open(staticCacheName).then(function (cache) {
       console.log("Service worker installed");
-  //    return cache.addAll([assetsToCache]);
+      return cache.addAll(assetsToCache);
     }) 
   );
 });
