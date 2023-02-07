@@ -62,9 +62,15 @@
           try {
             await navigator
                   .serviceWorker.register("/Mini-project/serviceWorker.js")
+                  .then
+
+
                   .then(function (registration) {
       console.log('Service worker successfully registered.');
       console.log(registration.scope);
+        navigator.serviceWorker.register("/Mini-project/firebase-messaging-sw.js").then(function (registration) {
+      console.log('Service worker FIREBASE successfully registered.');
+    }
     })
           }
           catch (e) {
