@@ -186,7 +186,7 @@ function notify(notifTitle,options){
 
 ////////////////////////////////////////////////////////////////
 
-    const messaging = firebase.messaging();
+   const messaging = firebase.messaging();
 requestPermission();
 function requestPermission() {
   console.log('Requesting permission...');
@@ -196,11 +196,16 @@ function requestPermission() {
     }
   });
 }
-firebase.getToken(messaging, { vapidKey: 'BESjtTRq1t8wn9WueljcfswYj1n0M2vA6idKAa8EoWVfpDh5YhlQxLKi4DrcCShlFzT9C6-IhdcFhIAQwtZ_KCk' }).then((currentToken) => {
+
+// Get registration token. Initially this makes a network call, once retrieved
+// subsequent calls to getToken will return from cache.
+messaging.getToken({ vapidKey: 'BESjtTRq1t8wn9WueljcfswYj1n0M2vA6idKAa8EoWVfpDh5YhlQxLKi4DrcCShlFzT9C6-IhdcFhIAQwtZ_KCk' })
+     .then((currentToken) => {
   if (currentToken) {
-      console.log(currentToken);
     // Send the token to your server and update the UI if necessary
     // ...
+    console.log("current token exists");
+    console.log(currentToken)
   } else {
     // Show permission request UI
     console.log('No registration token available. Request permission to generate one.');
@@ -209,7 +214,7 @@ firebase.getToken(messaging, { vapidKey: 'BESjtTRq1t8wn9WueljcfswYj1n0M2vA6idKAa
 }).catch((err) => {
   console.log('An error occurred while retrieving token. ', err);
   // ...
-});
+}); 
 
 
 </script>
