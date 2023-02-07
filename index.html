@@ -196,7 +196,7 @@ function requestPermission() {
     }
   });
 }
-getToken(messaging, { vapidKey: 'BESjtTRq1t8wn9WueljcfswYj1n0M2vA6idKAa8EoWVfpDh5YhlQxLKi4DrcCShlFzT9C6-IhdcFhIAQwtZ_KCk' }).then((currentToken) => {
+firebase.getToken(messaging, { vapidKey: 'BESjtTRq1t8wn9WueljcfswYj1n0M2vA6idKAa8EoWVfpDh5YhlQxLKi4DrcCShlFzT9C6-IhdcFhIAQwtZ_KCk' }).then((currentToken) => {
   if (currentToken) {
       console.log(currentToken);
     // Send the token to your server and update the UI if necessary
