@@ -1,7 +1,7 @@
 var staticCacheName = "pwa";
 const assetsToCache = [
-  '/index.html',
-  '/mystyle.css'
+  './index.html',
+  './mystyle.css'
 ];
 self.addEventListener("install", function (e) {
   e.waitUntil(
