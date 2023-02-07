@@ -61,7 +61,7 @@
        
           try {
             await navigator
-                  .serviceWorker.register("serviceWorker.js")
+                  .serviceWorker.register("/Mini-project/serviceWorker.js")
                   .then(function (registration) {
       console.log('Service worker successfully registered.');
       console.log(registration.scope);
