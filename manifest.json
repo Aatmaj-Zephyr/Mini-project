@@ -7,7 +7,7 @@
 "description": "This is the description of my mini project",
 "lang": "English",
 "dir": "auto",
-"scope":"/Mini-project/",
+"scope":"./",
 "theme_color": "#000000",
 "background_color": "#000000",
 "orientation": "any",
