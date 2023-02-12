@@ -68,9 +68,7 @@
                   .then(function (registration) {
       console.log('Service worker (app) successfully registered.');
       console.log(registration.scope);
-        navigator.serviceWorker.register("/Mini-project/firebase-messaging-sw.js").then(function (registration) {
-      console.log('Service worker FIREBASE successfully registered.');
-    })
+        
     })
           }
           catch (e) {
@@ -212,6 +210,9 @@ function requestPermission() {
 
 // Get registration token. Initially this makes a network call, once retrieved
 // subsequent calls to getToken will return from cache.
+navigator.serviceWorker.register("/Mini-project/firebase-messaging-sw.js").then(function (registration) {
+      console.log('Service worker FIREBASE successfully registered.');
+    
 messaging.getToken({ vapidKey: 'BESjtTRq1t8wn9WueljcfswYj1n0M2vA6idKAa8EoWVfpDh5YhlQxLKi4DrcCShlFzT9C6-IhdcFhIAQwtZ_KCk' })
      .then((currentToken) => {
   if (currentToken) {
@@ -228,6 +229,7 @@ messaging.getToken({ vapidKey: 'BESjtTRq1t8wn9WueljcfswYj1n0M2vA6idKAa8EoWVfpDh5
   console.log('An error occurred while retrieving token. ', err);
   // ...
 }); 
+});
 
 
 </script>
