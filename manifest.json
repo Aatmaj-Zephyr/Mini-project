@@ -1,7 +1,7 @@
 {
 "name": "testing pwa",
 "short_name": "Mini project",
-"start_url": "/Mini-project/",
+"start_url": "/Mini-project/src/index.html",
  "id":"/Mini-project/index.html",
 "display": "standalone",
 "description": "This is the description of my mini project",
