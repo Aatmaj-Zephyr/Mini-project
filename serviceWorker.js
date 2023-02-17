@@ -21,5 +21,13 @@ self.addEventListener("fetch", function (event) {
       return response || fetch(event.request);
     })
   );
+
+
+  
 });
 
+self.addEventListener('sync', event => {
+  if (event.tag === 'unique-tag-name') {
+    console.log("blablabla");
+  }
+});
