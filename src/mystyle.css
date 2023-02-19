@@ -231,3 +231,42 @@ color: #000000;
 
 
 }
+.centered{
+    position: relative;
+    left: calc(50% - 36%/2);
+    top: calc(50% - 17%/2 );
+}
+
+.outerProgressBar{
+    /* Frame 26 */
+
+
+box-sizing: border-box;
+width: 100%;
+
+position: relative;
+width: 70%;
+height: 5%;
+left: 20%;
+top: 50%;
+
+background: #000000;
+border: 1px solid #000000;
+border-radius: 30px;
+}
+.innerProgressBar{
+    /* Frame 24 */
+
+
+box-sizing: border-box;
+
+position: absolute;
+width: 10%;
+height: 100%;
+left: 0px;
+top: 0px;
+
+background: linear-gradient(90deg, #65FF74 41.71%, #FCFCFC 98.88%);
+border: 1px solid #000000;
+border-radius: 20px 20px 20px 20px;
+}

@@ -3,7 +3,36 @@
 
     <body class="kjscePageBody">
         
-            <image src="/assets/frog-and-dino-frog.gif"></image>
-       
+            <image class="centered" src="assets/frog-and-dino-frog.gif" height="15%" ></image>
+            <div class="outerProgressBar">
+                <div class="innerProgressBar" id="innerProgressBar"></div>
+              </div>
+            <script>
+              var i = 0;
+              move();
+              
+function move() {
+  if (i == 0) {
+    i = 1;
+    var elem = document.getElementById("innerProgressBar");
+    var width = 1;
+    var id = setInterval(frame, 60);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+        i = 0;
+        wait(20);
+        window.location.href="index.html";
+      } else {
+        width++;
+        elem.style.width = width + "%";
+      }
+    }
+  }
+
+  
+
+}
+            </script>
     </body>
 </html>
