@@ -1,26 +1,41 @@
-[
-    {
-        "Name":"Basketball",
-        "Location":"Somaiya BasketBall Court",
-        "playersNeeded":5,
-        "playersAcceptance":
-        {
-            "0":1,
-            "2":3,
-            "4":1
-        }
+{
+    "Events":{
+        "0":{
+            "Name":"Basketball",
+            "Location":"Somaiya BasketBall Court",
+            "playersNeeded":5,
+            "playersAcceptance":
+            {
+                "0":1,
+                "2":3,
+                "4":1
+            }
 
-    },
-    {
-        "Name":"FootBall",
-        "Location":"Somaiya ground",
-        "playersNeeded":12,
-        "playersAcceptance":
-        {
-            "0":1,
-            "2":2,
-            "5":1
-        }
+        },
+        "1":{
+            "Name":"FootBall",
+            "Location":"Somaiya ground",
+            "playersNeeded":12,
+            "playersAcceptance":
+            {
+                "0":1,
+                "2":2,
+                "5":1
+            }
 
+        },
+        "2":{
+            "Name":"Tennis",
+            "Location":"B wing Quadrangle",
+            "playersNeeded":4,
+            "playersAcceptance":
+            {
+                "0":1,
+                "2":1,
+                "3":1
+                
+            }
+
+        }
     }
-]
+}

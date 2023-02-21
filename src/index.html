@@ -11,7 +11,7 @@
 <link rel="manifest" href="/Mini-project/manifest.json" />     
 <body class="kjscePageBody">
     <div class="classNotifications">
-        <div class="notificationClass1" onclick="myFunction(1)">
+        <div class="notificationClass1" onclick="onEventClick(1)">
        
             <div class="notificationsSport">
                 <div class="heartVector">
@@ -55,6 +55,7 @@
    <script>
       window.addEventListener('load', () => {
        // registerSW();
+       //stopped for login. Else register immediately
       });
       registerSW();
       // Register the Service Worker
@@ -110,20 +111,18 @@ var likesCountRef = firebase.database().ref('Event');
 likesCountRef.on('value', (snapshot) => {
   const data = snapshot.val();
   console.log(data);
-  newNotification(data.time,data.Name,data.RegisteredPlayers+"/"+ data.Players,data.Likes)
+  displayNewEvent(data.time,data.Name,data.RegisteredPlayers+"/"+ data.Players,data.Likes)
 });
 }
    
     var notificationCount = 1;
-    function myFunction(a) {
-        var notificationBox = document.querySelector(".classNotifications").querySelector(".notificationClass" + a);
-        notificationBox.querySelector(".likesCountSmallDisplay").innerHTML = parseInt(notificationBox.querySelector(".likesCountSmallDisplay").innerHTML) + 1;
-
+    function onEventClick(a) {
+        console.log("Event no "+a+" Was selected");
         window.location.href="/eventPage.html";
 
     }
  
-    function newNotification( time,title,players,likes) {
+    function displayNewEvent( time,title,players,likes) {
 
        
         notificationCount+=1;
@@ -134,9 +133,9 @@ likesCountRef.on('value', (snapshot) => {
         var type = "sport"//fetch
       //  var title = "Badmington" //fetch
 
-        var newNotification =
+        var displayNewEvent =
             "   \
-            <div class=\" notificationClass"+notificationCount+"\"   onclick=\" myFunction("+notificationCount+")\" > \
+            <div class=\" notificationClass"+notificationCount+"\"   onclick=\" onEventClick("+notificationCount+")\" > \
             <div class=\" notifications"+ type + "\" >                                                            \
                 <div class=\" heartVector\" >                                                           \
                     <i class=\"fa fa-heart\" style=\"color:#fa0303; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;\"></i>\
@@ -162,7 +161,7 @@ likesCountRef.on('value', (snapshot) => {
                 </div>                                                          \
             </div></div>                                                            \
             "
-        classNotifications.innerHTML += newNotification
+        classNotifications.innerHTML += displayNewEvent
 
 //send notification from app
 
