@@ -121,7 +121,16 @@ function fetchFromFireBase(){ //fetch data from firebase
 
 }
 var eventID = 1;
-var oldEvents=[];
+try{
+var oldEvents=localStorage.getItem('oldEventsCache').split(",");// sorround try catch
+} 
+catch(error){
+  //first time making 
+
+  localStorage.setItem("oldEventsCache", [].toString()); 
+
+}
+console.log(oldEvents);
 function processData(data){
 /*
   Three types of updates
@@ -172,6 +181,7 @@ console.log(newEvents);
     }
   );
   oldEvents=newEvents.copyWithin();
+  localStorage.setItem("oldEventsCache", newEvents.toString()); //add to local storage
 
    
 
