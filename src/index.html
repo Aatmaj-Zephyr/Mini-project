@@ -100,29 +100,31 @@
 };
 firebase.initializeApp(firebaseConfig);
 fetchFromFireBase();
-function fetchFromFireBase(){ //fetch from firebase
-var likesCountRef = firebase.database().ref('Event/Likes');
-likesCountRef.on('value', (snapshot) => {
-  const data = snapshot.val();
-//  updateLikesCount(postElement, data);
-  console.log(data);
-});
-var likesCountRef = firebase.database().ref('Event');
-likesCountRef.on('value', (snapshot) => {
-  const data = snapshot.val();
-  console.log(data);
-  displayNewEvent(data.time,data.Name,data.RegisteredPlayers+"/"+ data.Players,data.Likes)
-});
+function fetchFromFireBase(){ //fetch data from firebase
+
+          var likesCountRef = firebase.database().ref('Event/Likes');
+          likesCountRef.on('value', (snapshot) => {
+            const data = snapshot.val();
+          //  updateLikesCount(postElement, data);
+            console.log(data);
+          });
+          var likesCountRef = firebase.database().ref('Event');
+          likesCountRef.on('value', (snapshot) => {
+            const data = snapshot.val();
+            console.log(data);
+            displayNewEvent(data.time,data.Name,data.RegisteredPlayers+"/"+ data.Players,data.Likes)
+          });
+          
 }
    
-    var notificationCount = 1;
-    function onEventClick(a) {
+var notificationCount = 1;
+
+function onEventClick(a) {
         console.log("Event no "+a+" Was selected");
         window.location.href="/eventPage.html";
-
     }
  
-    function displayNewEvent( time,title,players,likes) {
+function displayNewEvent( time,title,players,likes) {
 
        
         notificationCount+=1;
@@ -197,9 +199,7 @@ Notification.requestPermission(function(result) {
 
 }
 
-////////////////////////////////////////////////////////////////
 
-   const messaging = firebase.messaging();
 requestPermission();
 function requestPermission() {
   console.log('Requesting permission...');
@@ -210,32 +210,6 @@ function requestPermission() {
   });
 }
 
-// Get registration token. Initially this makes a network call, once retrieved
-// subsequent calls to getToken will return from cache.
-navigator.serviceWorker.register("/Mini-project/firebase-messaging-sw.js").then(function (registration) {
-      console.log('Service worker FIREBASE successfully registered.');
-    
-messaging.getToken({ vapidKey: 'BESjtTRq1t8wn9WueljcfswYj1n0M2vA6idKAa8EoWVfpDh5YhlQxLKi4DrcCShlFzT9C6-IhdcFhIAQwtZ_KCk' })
-     .then((currentToken) => {
-  if (currentToken) {
-    // Send the token to your server and update the UI if necessary
-    // ...
-    console.log("current token exists");
-    console.log(currentToken)
-  } else {
-    // Show permission request UI
-    console.log('No registration token available. Request permission to generate one.');
-    // ...
-  }
-}).catch((err) => {
-  console.log('An error occurred while retrieving token. ', err);
-  // ...
-}); 
-});
-
-navigator.serviceWorker.ready(serviceWorkerRegistration => {
-               serviceWorkerRegistration.sync.register('trail');
-            });
 </script>
 
 
