@@ -12,8 +12,9 @@
 <body class="kjscePageBody">
     <div class="classNotifications">
         <div class="notificationClass1" onclick="onEventClick(1)">
-       
-            <div class="notificationsSport">
+       <script>
+        //This was before
+           /* <div class="notificationsSport">
                 <div class="heartVector">
                     <i class="fa fa-heart"
                         style="color:#fa0303; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;"></i>
@@ -37,8 +38,8 @@
                 <div class=" sportTag">
                     Sport
                 </div>
-            </div>
-           
+            </div>*/
+          </script>
         </div>
     </div>
     <div class="addEventButton" onclick="registerSW()">
@@ -56,6 +57,8 @@
       window.addEventListener('load', () => {
        // registerSW();
        //stopped for login. Else register immediately
+
+       
       });
       registerSW();
       // Register the Service Worker
@@ -102,73 +105,121 @@ firebase.initializeApp(firebaseConfig);
 fetchFromFireBase();
 function fetchFromFireBase(){ //fetch data from firebase
 
-          var likesCountRef = firebase.database().ref('Event/Likes');
-          likesCountRef.on('value', (snapshot) => {
+    
+          var eventsReference = firebase.database().ref('Events');
+          eventsReference.on('value', (snapshot) => { //on change in value of any event in the database.....
             const data = snapshot.val();
-          //  updateLikesCount(postElement, data);
-            console.log(data);
+            
+            processData(data);//process the updated data (JSON)
+            
+
+            
+
           });
-          var likesCountRef = firebase.database().ref('Event');
-          likesCountRef.on('value', (snapshot) => {
-            const data = snapshot.val();
-            console.log(data);
-            displayNewEvent(data.time,data.Name,data.RegisteredPlayers+"/"+ data.Players,data.Likes)
-          });
-          
+
 }
+var eventCount = 1;
+var oldEvents=[];
+function processData(data){
+/*
+  Three types of updates
+
+1) Event is added to the list
+2) Event is removed from the list
+3) Event properties are updated
+*/
+
+
+var newEvents=[];
+  for (var key in data){
+    newEvents.push(key);
+  }
+console.log(oldEvents);
+  for(var key in oldEvents){
+    if(!newEvents.includes(key)){
+      console.log("Deleted one event with id "+key+" from the list")
+      //an Event is deleted from the list
+
+
+      //continue procedure same as update event
+    }
+  }
+
+  for(var key in newEvents){
+    if(!oldEvents.includes(key)){
+      console.log("Added one event with id "+key+" to the list");
+      //new notifcation add
+      showNotification(data[key].Time, data[key].Name, data[key].playersAcceptance, data[key].playersNeeded,data[key].location);
+      //an Event is added to the list, continue to updates 
+    }
+  }
+
+   //Event updates, no notifications. 
+
+  var classNotifications = document.querySelector(".classNotifications")
+  classNotifications.innerHTML="" //clear old data
+ 
+  data.forEach(obj => {
+    console.log(obj.Name);
+        displayNewEvent(obj.Time,obj.Name,obj.playersAcceptance,obj.playersNeeded,obj.Location)
+       });
+
+  oldEvents=newEvents.copyWithin();
+
    
-var notificationCount = 1;
+
+  data.forEach(obj => {
+        console.log(obj);
+    });
+console.log(data.length);
+}
+
 
 function onEventClick(a) {
         console.log("Event no "+a+" Was selected");
         window.location.href="/eventPage.html";
     }
  
-function displayNewEvent( time,title,players,likes) {
+function displayNewEvent( time,title,players,playersNeeded,location) {
 
-       
-        notificationCount+=1;
+       console.log("New Event");
+        eventCount+=1;
         var classNotifications = document.querySelector(".classNotifications")
-       // var likes = 5;//fetch
-      //  var time = "2:15-3:15" //fetch
-     //   var players = "3/10"//fetch
-        var type = "sport"//fetch
-      //  var title = "Badmington" //fetch
-
+     
+    // players and location will be used for later steps
         var displayNewEvent =
             "   \
-            <div class=\" notificationClass"+notificationCount+"\"   onclick=\" onEventClick("+notificationCount+")\" > \
-            <div class=\" notifications"+ type + "\" >                                                            \
+            <div class=\" notificationClass"+eventCount+"\"   onclick=\" onEventClick("+eventCount+")\" > \
+            <div class=\" notificationsSport" + "\" >                                                            \
                 <div class=\" heartVector\" >                                                           \
                     <i class=\"fa fa-heart\" style=\"color:#fa0303; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;\"></i>\
                 </div>                                                          \
-                <div class=\" likesCountSmallDisplay\" >                                                            \
-                    "+likes+"                                                           \
-                </div>                                                          \
+                                                                          \
                 <div class=\" timeSmallDisplay\" >                                                          \
                     "+time+    "                                                       \
                 </div>                                                          \
                 <div class=\" playersSmallDisplay\" >                                                           \
-                  "+players+"                                                        \
+                  "+playersNeeded+"                                                        \
                 </div>                                                                          \
-                <div class=\" "+ type + "Icon\" >                                                         \
+                <div class=\" "+ "sport" + "Icon\" >                                                         \
                 </div>                                                              \
                 <div class=\" titleSmall\" >                                                            \
                     "+title.toUpperCase()+"                                                          \
                 </div>                                                          \
                 <div class=\" horizontalLine\" >                                                            \
                 </div>                                                          \
-                <div class=\"  "+ type + "Tag\" >                                                         \
-                    "+ type + "                                                           \
-                </div>                                                          \
+                                                                        \
             </div></div>                                                            \
             "
         classNotifications.innerHTML += displayNewEvent
 
+          }
+
+ function showNotification(time,title,players,playersNeeded,location ) {
 //send notification from app
 
   const notifTitle = title;
-  const notifBody = `New `+ type + " " + title + ' is added with ' + players;
+  const notifBody = `New sport` + " " + title + ' is added with ' + playersNeeded;
   const notifImg = `https://threeoakscs.org/wp-content/uploads/2018/01/cropped-android-icon-192x192.png`;
   const options = {
     body: notifBody, //body of app
