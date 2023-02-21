@@ -1,0 +1,26 @@
+[
+    {
+        "Name":"Basketball",
+        "Location":"Somaiya BasketBall Court",
+        "playersNeeded":5,
+        "playersAcceptance":
+        {
+            "0":1,
+            "2":3,
+            "4":1
+        }
+
+    },
+    {
+        "Name":"FootBall",
+        "Location":"Somaiya ground",
+        "playersNeeded":12,
+        "playersAcceptance":
+        {
+            "0":1,
+            "2":2,
+            "5":1
+        }
+
+    }
+]

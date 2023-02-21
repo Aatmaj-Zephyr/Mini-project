@@ -1,5 +1,14 @@
 <!-- event page -->
 <html>
+  <!-- Select2 CSS --> 
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" /> 
+
+<!-- jQuery --> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+
+<!-- Select2 JS --> 
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
     <link rel="stylesheet" href="eventPage.css">
     <body class="newEventPage">
         <div class="titleFrame">
@@ -13,28 +22,44 @@
         
         
        
-        
-        <script>
-        /* When the user clicks on the button, 
-        toggle between hiding and showing the dropdown content */
-        function toggleDropDown(a) {
-          document.getElementById(a).classList.toggle("show");
-        }
-       
-          
-        
-        </script>
-            <div class="sendToText">
-                Send to         
+              <select id='selUser' class="dropDownArrowtextbox">
+                <option value='0'>Select Location</option> 
+                <option value='1'>Yogesh singh</option> 
+                <option value='2'>Sonarika Bhadoria</option> 
+                <option value='3'>Anil Singh</option> 
+                <option value='4'>Vishal Sahu</option> 
+                <option value='5'>Mayank Patidar</option> 
+                <option value='6'>Vijay Mourya</option> 
+                <option value='7'>Rakesh sahu</option> 
+             </select>
+             <script>
+              //read from json and put to array i 
+              for(let i=0; i<10;i++){
+
+                var b = "<option value='"+i+"'>"+a[i]+"</option>";
+                document.getElementById(selUser).innerHTML+=b;
+                
+              }
+             </script>
+<script>
+  $(document).ready(function(){
+ 
+ // Initialize select2
+ $("#selUser").select2();
+
+ // Read selected option
+ $('#but_read').click(function(){
+     var username = $('#selUser option:selected').text();
+     var userid = $('#selUser').val();
+
+     $('#result').html("id : " + userid + ", name : " + username);
+
+ });
+});
+</script>              
             </div>
-            <div class="sendToDropDown" onclick=toggleDropDown(sendToDropDownEle)>
-          
-                <div id="sendToDropDownEle" class="sendtoDropDownEle">
-                  <a>Home</a>
-                  <a href="#about">About</a>
-                  <a href="#contact">Contact</a>
-                </div>
-              </div>
+            
+            
         </input>
         </div>
     </body>
