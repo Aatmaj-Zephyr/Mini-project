@@ -58,6 +58,8 @@
        // registerSW();
        //stopped for login. Else register immediately
 
+       //testing
+       //addEventToDB("2:30-3:30","monaco","nana",4)
        
       });
       registerSW();
@@ -118,7 +120,7 @@ function fetchFromFireBase(){ //fetch data from firebase
           });
 
 }
-var eventCount = 1;
+var eventID = 1;
 var oldEvents=[];
 function processData(data){
 /*
@@ -131,11 +133,12 @@ function processData(data){
 
 
 var newEvents=[];
-  for (var key in data){
+  for (let key in data){
     newEvents.push(key);
   }
 console.log(oldEvents);
-  for(var key in oldEvents){
+console.log(newEvents);
+  for(let key of oldEvents){
     if(!newEvents.includes(key)){
       console.log("Deleted one event with id "+key+" from the list")
       //an Event is deleted from the list
@@ -145,7 +148,7 @@ console.log(oldEvents);
     }
   }
 
-  for(var key in newEvents){
+  for(let key of newEvents){
     if(!oldEvents.includes(key)){
       console.log("Added one event with id "+key+" to the list");
       //new notifcation add
@@ -159,11 +162,15 @@ console.log(oldEvents);
   var classNotifications = document.querySelector(".classNotifications")
   classNotifications.innerHTML="" //clear old data
  
-  data.forEach(obj => {
-    console.log(obj.Name);
-        displayNewEvent(obj.Time,obj.Name,obj.playersAcceptance,obj.playersNeeded,obj.Location)
-       });
+  Object.keys(data).forEach(key => {
+       obj=data[key];
+       console.log("Current id"+key);
+        console.log(obj);
+        console.log("Name of the event corresponsing to the id"+obj.Name);
 
+        displayNewEvent(obj.Time,obj.Name,obj.playersAcceptance,obj.playersNeeded,obj.Location,key)
+    }
+  );
   oldEvents=newEvents.copyWithin();
 
    
@@ -171,25 +178,63 @@ console.log(oldEvents);
   data.forEach(obj => {
         console.log(obj);
     });
-console.log(data.length);
+console.log("Length of the data is "+data.length);
 }
 
 
 function onEventClick(a) {
         console.log("Event no "+a+" Was selected");
-        window.location.href="/eventPage.html";
+        //temporarily select in player.
+
+        considerIn(a,0)
+       // window.location.href="/eventPage.html";
     }
  
-function displayNewEvent( time,title,players,playersNeeded,location) {
+function considerIn(a,p){
+  //p is no of players
+  //a is the id of the event (and not the number)
+  const db = firebase.database();
+  var playersAcceptanceReference = firebase.database().ref('Events/' + a);
+  var temp=0;
+  playersAcceptanceReference.once('value', (snapshot) => { //change monitored only once.
+            const players = snapshot.val().playersAcceptance;
+          console.log(players[p]);
+          temp=players[p];
+          });
+          if(typeof temp == "undefined") {
+            //the setting doesnt exist, hence add it as new entity
+            firebase.database().ref('Events/' + a +"/playersAcceptance/"+p).set("1");
+          }
+          else{
+            temp=parseInt(temp)+1 
+            //setting exists, do +1 on it.
+            //the setting doesnt exist, hence add it as new entity
+            firebase.database().ref('Events/' + a +"/playersAcceptance/"+p).set(""+temp);
+          }
+}
+function addEventToDB(time,name,location,playersNeeded){
+  firebase.database().ref('Events/' + 4).set({
+  
+  Name: name,
+  Time: time,
+  Location : location,
+  playersAcceptance:{"0":1}, //making it the dfault that the player who enters the event must be present
+  playersNeeded:playersNeeded
+});
+console.log("Added event to database")
+  
+}
+function displayNewEvent( time,title,players,playersNeeded,location,eventID) {
 
+  //eventID is the id of the event in db
        console.log("New Event");
-        eventCount+=1;
+        
         var classNotifications = document.querySelector(".classNotifications")
      
     // players and location will be used for later steps
         var displayNewEvent =
             "   \
-            <div class=\" notificationClass"+eventCount+"\"   onclick=\" onEventClick("+eventCount+")\" > \
+            <div class=\" notificationClass"+eventID+"\"   onclick=\" onEventClick("+eventID+")\" > \
             <div class=\" notificationsSport" + "\" >                                                            \
                 <div class=\" heartVector\" >                                                           \
                     <i class=\"fa fa-heart\" style=\"color:#fa0303; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;\"></i>\
