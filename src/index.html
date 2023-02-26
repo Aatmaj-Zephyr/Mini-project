@@ -42,7 +42,7 @@
           </script>
         </div>
     </div>
-    <div class="addEventButton" onclick="registerSW()">
+    <div class="addEventButton" onclick="test()">
         <div class="addEventButtonText">
         ADD EVENT
     </div>
@@ -58,10 +58,14 @@
        // registerSW();
        //stopped for login. Else register immediately
 
-       //testing
-       //addEventToDB("2:30-3:30","monaco","nana",4)
        
       });
+      function test() {
+       // registerSW();
+        //testing
+       addEventToDB("2:30-3:30","Chess","B 203",4)
+       removeFromDB(5);
+      }
       registerSW();
       // Register the Service Worker
       async function registerSW() {
@@ -84,8 +88,8 @@
             console.log('SW registration for app failed');
             console.log(e.message);
           }
-        
       }
+      
 
 
    </script>
@@ -121,8 +125,10 @@ function fetchFromFireBase(){ //fetch data from firebase
 
 }
 var eventID = 1;
+var newEvents=[];
+
 try{
-var oldEvents=localStorage.getItem('oldEventsCache').split(",");// sorround try catch
+  var oldEvents=localStorage.getItem('oldEventsCache').split(",");// sorround try catch
 } 
 catch(error){
   //first time making 
@@ -130,7 +136,7 @@ catch(error){
   localStorage.setItem("oldEventsCache", [].toString()); 
 
 }
-console.log(oldEvents);
+
 function processData(data){
 /*
   Three types of updates
@@ -141,7 +147,7 @@ function processData(data){
 */
 
 
-var newEvents=[];
+ 
   for (let key in data){
     newEvents.push(key);
   }
@@ -222,17 +228,26 @@ function considerIn(a,p){
             firebase.database().ref('Events/' + a +"/playersAcceptance/"+p).set(""+temp);
           }
 }
-function addEventToDB(time,name,location,playersNeeded){
-  firebase.database().ref('Events/' + 4).set({
+
+
+function addEventToDB(time,name,location,playersNeeded,id){
+  var id=Math.max(...newEvents)+1
+
+  console.log("The new event will be added at id = "+ id)
+  firebase.database().ref('Events/' + id).set({
   
   Name: name,
   Time: time,
   Location : location,
-  playersAcceptance:{"0":1}, //making it the dfault that the player who enters the event must be present
+  playersAcceptance:{"0":1}, //making it the default that the player who enters the event must be present
   playersNeeded:playersNeeded
 });
-console.log("Added event to database")
-  
+}
+
+function removeFromDB(id){
+  firebase.database().ref('Events/' + id).remove();
+  console.log("Event removed")
+
 }
 function displayNewEvent( time,title,players,playersNeeded,location,eventID) {
 
