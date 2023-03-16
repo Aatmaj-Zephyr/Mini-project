@@ -12,22 +12,21 @@
 			// on load of the window, call the function firebaseConfigure();
 			window.addEventListener("load", (event) => {
 				firebaseConfigure();
+				loadSite();
 			});
+			
 		</script>
 	</head>
+	<div class="canvas">
 	<div class="e10_2">
 		<div class="sportTile">
-			<span class="e10_7">BASKETBALL </span>
+			<span class="e10_7" id="sportName">BASKETBALL </span>
 
 			<div class="lineHor">a</div>
 			<div class="sportIcon">b</div>
-			<span class="playersIndicator">7/10</span><span class="TimeIndicator">4:15-5:15</span
-			><span class="TimeText">Time:</span><span class="playersText">Players:</span>
-			<div class="infoBox">
-				<span class="infoText"
-					>Only Boys. Please wear shoes. Aatmaj is bringing ball</span
-				>
-			</div>
+			<span class="playersIndicator" id="players">7/10</span>
+			<span class="TimeIndicator" id="time">4:15-5:15</span>
+			<span class="TimeText">Time:</span><span class="playersText">Players:</span>
 			<div class="LikeIcon">
 				
 			</div>
@@ -40,35 +39,29 @@
 				<div class="e10_19"></div>
 				<div class="e10_20"></div>
 			</div>
-			<span class="e10_26">Somaiya School Basketball Court</span
+			<span class="e10_26" id="location">Somaiya School Basketball Court</span
 			><span class="e10_65">4</span>
-			<div class="e10_66"></div>
+			<div class="e10_66">a</div>
 		</div>
 		<div class="e10_35"  onclick="goBack()"></div>
 		<span class="e10_36">I’m OUT</span>
+		<div class="e10_32"  onclick="considerIn(localStorage.getItem('selectedEvent'),0)"></div>
+		<span class="e10_33">I’m IN</span>
+
 		<div class="e10_38" onclick="considerIn(localStorage.getItem('selectedEvent'),5)"></div>
 		<span class="e10_39" >I’m IN if...</span>
-		<div class="e10_32"  onclick="considerIn(localStorage.getItem('selectedEvent'),0)"></div>
-		<span class="e10_33">I’m IN</span><span class="e10_41">people join</span>
+		
+		
+		
 		<div class="e10_40">
 			<span class="e10_43">5</span>
 			<div class="e10_86">
-				<div class="e10_87"></div>
+				<div class="e10_87">+</div>
 			</div>
 		</div>
-		<div class="e10_48"></div>
-		<div class="e10_64">
-			<div class="e10_51"></div>
-			<div class="e10_52"></div>
-		</div>
-		<div class="e10_68">
-			<div class="e6_86"></div>
-		</div>
-		<div class="e10_70">
-			<div class="e10_54"></div>
-		</div>
-		<span class="e10_71" >Like</span><span class="e10_72">Share</span
-		><span class="e10_73">Back</span>
+		<span class="e10_41">people join</span>
+		
+		
 	</div>
 	<script>
 		

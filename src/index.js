@@ -145,6 +145,7 @@ function onEventClick(a) {
     //store the id of the element in local storage
     localStorage.setItem("selectedEvent", a);
 
+
     //go to selected event page
     window.location.href = "./SelectedEventPage.html";
 
@@ -216,15 +217,15 @@ function displayNewEvent(time, title, players, playersNeeded, location, eventID)
                       <i class=\"fa fa-heart\" style=\"color:#fa0303; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;\"></i>\
                   </div>                                                          \
                                                                             \
-                  <div class=\" timeSmallDisplay\" >                                                          \
+                  <div class=\" timeSmallDisplay\" id = \"timeOfEvent"+eventID+"\" >                                                          \
                       "+ time + "                                                       \
                   </div>                                                          \
-                  <div class=\" playersSmallDisplay\" >                                                           \
+                  <div class=\" playersSmallDisplay\" id = \"playersNeededForEvent"+eventID+"\">                                                           \
                     "+ playersNeeded + "                                                        \
                   </div>                                                                          \
                   <div class=\" "+ "sport" + "Icon\" >                                                         \
                   </div>                                                              \
-                  <div class=\" titleSmall\" >                                                            \
+                  <div class=\" titleSmall\" id = \"titleOfEvent"+eventID+"\" >                                                            \
                       "+ title.toUpperCase() + "                                                          \
                   </div>                                                          \
                   <div class=\" horizontalLine\" >                                                            \
@@ -285,7 +286,31 @@ function goBack() {
     window.location.href = './index.html'
 }
 
+function loadSite(){
+    itemID=localStorage.getItem("selectedEvent");
+    console.log(itemID);
+    //get data from firebase
+    var addEventReference = firebase.database().ref('Events/' + itemID);
+    let currplayers;
+let currtitle;
 
+addEventReference.once('value', (snapshot) => {
+    currplayers = snapshot.val().playersNeeded;
+    currtitle = snapshot.val().Name;
+    currloc = snapshot.val().Location;
+    currtime = snapshot.val().Time;
+    
+    //set the element id sportName to the sport name fetched from the database
+    document.getElementById("sportName").innerHTML = currtitle;
+    document.getElementById("location").innerHTML = currloc;
+    document.getElementById("time").innerHTML = currtime;
+    document.getElementById("players").innerHTML = currplayers;
+
+});
+
+    console.log(currtitle);
+
+}
 
 /*if two files sharing same js file is giving error, then do the following
 1) set the data to be added to the local storage
