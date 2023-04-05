@@ -23,6 +23,7 @@
 }
 .sportTile{ 
 	border:1px solid rgba(0, 0, 0, 1);
+	display: flex;
 }
 .e10_7 { 
 	color:rgba(0, 0, 0, 1);
@@ -57,6 +58,7 @@
 	background-image:url(images/soccer_ball.png);
 	background-repeat:no-repeat;
 	background-size:cover;
+	font-size: 48;
 }
 .playersIndicator { 
 	color:rgba(0, 0, 0, 1);
@@ -76,7 +78,7 @@
 	height:40px;
 	position:absolute;
 	left:126px;
-	top:263px;
+	top:95px;
 	font-family:Comic Neue;
 	text-align:left;
 	font-size:24px;
@@ -88,7 +90,7 @@
 	height:28px;
 	position:absolute;
 	left:60px;
-	top:261px;
+	top:95px;
 	font-family:Comic Neue;
 	text-align:left;
 	font-size:24px;
@@ -165,8 +167,8 @@
 	width:59px;
 	height:28px;
 	position:absolute;
-	left:60px;
-	top:301px;
+	left:65px;
+	top:185px;
 	font-family:Comic Neue;
 	text-align:left;
 	font-size:24px;
@@ -176,8 +178,8 @@
 	width:25px;
 	height:25px;
 	position:absolute;
-	left:28px;
-	top:341px;
+	left:20px;
+	top:265px;
 }
 .e7_21 { 
 	border:1.5px solid rgba(0, 0, 0, 1);
@@ -203,8 +205,8 @@
 	width:28px;
 	height:28px;
 	position:absolute;
-	left:24px;
-	top:261px;
+	left:20px;
+	top:90px;
 }
 .e10_19 { 
 	border:1.5px solid rgba(0, 0, 0, 1);
@@ -232,10 +234,10 @@
 	height:18px;
 	position:absolute;
 	left:60px;
-	top:346px;
+	top:275px;
 	font-family:Comic Neue;
 	text-align:left;
-	font-size:16px;
+	font-size:28px;
 	letter-spacing:0;
 }
 .e10_65 { 
@@ -389,7 +391,7 @@
 	height:55px;
 	position:absolute;
 	left:26.970947265625px;
-	top:7px;
+	top:8px;
 	font-family:Comic Neue;
 	text-align:left;
 	font-size:48px;
@@ -540,4 +542,18 @@
 .canvas{
 	position: absolute;
 	left: 40%;
+}
+.dateIcon{
+	/* Iconsax/Linear/calendar */
+
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 20px;
+top: 175px;
+
+}
+.emogi{
+	font-size: 36;
 }
