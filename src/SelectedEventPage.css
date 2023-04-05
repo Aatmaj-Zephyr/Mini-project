@@ -397,12 +397,21 @@
 	font-size:48px;
 	letter-spacing:0;
 }
-.e10_86 { 
+.upArrow { 
 	width:40px;
 	height:40px;
 	position:absolute;
 	left:65.970947265625px;
-	top:15px;
+	top:0px;
+	font-size: 26px;
+}
+.downArrow { 
+	width:40px;
+	height:40px;
+	position:absolute;
+	left:65.970947265625px;
+	top:38px;
+	font-size: 26px;
 }
 .e10_87 { 
 	background-color:rgba(217.0000022649765, 217.0000022649765, 217.0000022649765, 1);

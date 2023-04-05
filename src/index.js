@@ -1,4 +1,9 @@
 window.addEventListener('load', () => {
+    /***** */
+    //other initialization tasks
+    localStorage.setItem("ifNum",5);
+
+    /****** */
     // registerSW();
     //stopped for login. Else register immediately
 
@@ -155,6 +160,7 @@ function onEventClick(a) {
 }
 
 function considerIn(a, p) {
+    console.log("consider in called")
     //p is no of players
     //a is the id of the event (and not the number)
 
@@ -179,8 +185,36 @@ function considerIn(a, p) {
     //now go back to home page
     window.location.href = "./index.html";
 }
+function considerInIf(a){
+    if(localStorage.getItem("ifNum")){
+        considerIn(a,localStorage.getItem("ifNum"))
+    }
+    else{
+        localStorage.setItem("ifNum",5);
+        considerIn(a,localStorage.getItem("ifNum"))
+    }
+}
+function up(){
+    if(localStorage.getItem("ifNum")){
+        localStorage.setItem("ifNum",parseInt(localStorage.getItem("ifNum"))+1);
+    }
+    else{
+        localStorage.setItem("ifNum",5);
+    }
 
+    document.getElementById('ifNumIndicator').innerHTML = localStorage.getItem("ifNum");
+}
 
+function down(){
+    if(localStorage.getItem("ifNum")){
+        localStorage.setItem("ifNum",parseInt(localStorage.getItem("ifNum"))-1);
+    }
+    else{
+        localStorage.setItem("ifNum",5);
+    }
+
+    document.getElementById('ifNumIndicator').innerHTML = localStorage.getItem("ifNum");
+}
 function addEventToDB(time, name, location, playersNeeded, id) {
     var id = Math.max(...newEvents) + 1
 

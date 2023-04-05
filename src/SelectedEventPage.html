@@ -53,14 +53,15 @@
 		<div class="e10_32"  onclick="considerIn(localStorage.getItem('selectedEvent'),0)"></div>
 		<span class="e10_33">I’m IN</span>
 
-		<div class="e10_38" onclick="considerIn(localStorage.getItem('selectedEvent'),5)"></div>
+		<div class="e10_38" onclick="considerInIf(localStorage.getItem('selectedEvent'))"></div>
 		<span class="e10_39" >I’m IN if...</span>
 		
 		
 		
 		<div class="e10_40">
-			<span class="e10_43">5</span>
-			<div class="e10_86 emogi">🔼</div>
+			<span id="ifNumIndicator" class="e10_43">5</span>
+			<div class="upArrow " id="upArrow" onclick="up()">🔼</div>
+			<div class="downArrow " id="downArrow" onclick="down()">🔽</div>
 		</div>
 		<span class="e10_41">people join</span>
 		
