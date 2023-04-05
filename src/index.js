@@ -1,3 +1,5 @@
+/* The  code is adding an event listener to the window object that listens for the "load" event.
+Once the window has finished loading, it executes the code inside the callback function. */
 window.addEventListener('load', () => {
     /***** */
     //other initialization tasks
@@ -9,14 +11,24 @@ window.addEventListener('load', () => {
 
 
 });
+
+/**
+ * The function calls two other functions, one to add an event to a database and another to remove an
+ * item from the database.
+ */
 function test() {
     // registerSW();
     //testing
     addEventToDB("2:30-3:30", "Chess", "B 203", 4)
     removeFromDB(5);
 }
+
 registerSW();
 // Register the Service Worker
+
+/**
+ * This function registers a service worker for an app and logs the registration status and scope.
+ */
 async function registerSW() {
     console.log('Registering service worker for app');
 
@@ -38,6 +50,9 @@ async function registerSW() {
         console.log(e.message);
     }
 }
+/**
+ * This function fetches data from Firebase and processes the updated data.
+ */
 function fetchFromFireBase() { //fetch data from firebase
 
 
@@ -53,6 +68,9 @@ function fetchFromFireBase() { //fetch data from firebase
     });
 
 }
+/**
+ * The function configures Firebase and initializes local storage for event caching.
+ */
 function firebaseConfigure() {
     const firebaseConfig = {
         apiKey: "AIzaSyA4DEsfJ0EZJRqEoGVYWEcHo53I1flmgPA",
@@ -82,6 +100,15 @@ catch (error) {
     localStorage.setItem("oldEventsCache", [].toString());
 
 }
+
+/**
+ * The `processData` function handles adding, removing, and updating events in a list and also displays
+ * notifications and updates the local storage.
+ * @param data - The `data` parameter is an object containing information about events, with each key
+ * representing the ID of an event and the corresponding value being an object containing properties
+ * such as the event name, time, location, and number of players needed/accepted. The `processData`
+ * function uses this data to update
+ */
 function processData(data) {
     /*
       Three types of updates
@@ -98,6 +125,12 @@ function processData(data) {
     }
     console.log(oldEvents);
     console.log(newEvents);
+
+    /* The  code is iterating through an array called `oldEvents` using a `for...of` loop. For
+    each element in the array, it checks if it is not included in another array called `newEvents`
+    using the `includes()` method. If the element is not included in `newEvents`, it logs a message
+    to the console saying that an event with that ID has been deleted from the list. After that, the
+    code continues with the same procedure as updating an event. */
     for (let key of oldEvents) {
         if (!newEvents.includes(key)) {
             console.log("Deleted one event with id " + key + " from the list")
@@ -108,6 +141,11 @@ function processData(data) {
         }
     }
 
+    /* The  code is iterating through an array called `newEvents` and checking if each element is
+    not included in another array called `oldEvents`. If an element is not included in `oldEvents`,
+    it logs a message to the console saying that an event with a specific ID has been added to the
+    list. It also calls a function called `showNotification` with some data related to the event
+    that was added. */
     for (let key of newEvents) {
         if (!oldEvents.includes(key)) {
             console.log("Added one event with id " + key + " to the list");
@@ -122,6 +160,12 @@ function processData(data) {
     var classNotifications = document.querySelector(".classNotifications")
     classNotifications.innerHTML = "" //clear old data
 
+    /* The  code is iterating through an object called "data" using the Object.keys() method. For
+    each key in the object, it logs the current id, the object associated with that id, and the name
+    of the event corresponding to that id. It then calls a function called "displayNewEvent" with
+    various properties of the object as arguments. Finally, it copies the contents of a variable
+    called "newEvents" into a variable called "oldEvents" and saves the contents of "newEvents" as a
+    string in local storage under the key "oldEventsCache". */
     Object.keys(data).forEach(key => {
         obj = data[key];
         console.log("Current id" + key);
@@ -136,6 +180,9 @@ function processData(data) {
 
 
 
+    /* The  code is iterating through an array called `data` using the `forEach` method and
+    logging each object in the array to the console. After iterating through the array, it logs the
+    length of the array to the console. */
     data.forEach(obj => {
         console.log(obj);
     });
@@ -158,6 +205,15 @@ function onEventClick(a) {
     //considerIn(a, 0)
     // window.location.href="/eventPage.html";
 }
+
+/**
+ * The function updates the number of players who have accepted an event invitation in a Firebase
+ * database and redirects the user to the home page.
+ * @param a - The ID of an event (not the number).
+ * @param p - The parameter `p` represents the index of the player in the `playersAcceptance` array for
+ * a particular event. It is used to keep track of the number of times a player has accepted an event
+ * invitation.
+ */
 
 function considerIn(a, p) {
     console.log("consider in called")
@@ -185,6 +241,15 @@ function considerIn(a, p) {
     //now go back to home page
     window.location.href = "./index.html";
 }
+
+/**
+ * The function checks if a certain value exists in local storage and calls another function with that
+ * value if it does, otherwise it sets the value in local storage and calls the function with a default
+ * value.
+ * @param a - The parameter `a` is a value that will be passed as an argument to the `considerIn`
+ * function. It is not specified what type of value `a` should be, as it depends on the implementation
+ * of the `considerIn` function.
+ */
 function considerInIf(a){
     if(localStorage.getItem("ifNum")){
         considerIn(a,localStorage.getItem("ifNum"))

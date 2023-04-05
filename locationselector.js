@@ -44,6 +44,7 @@ input.addEventListener('input', () => {
 
 // Add event listener for click to show the search bar
 input.addEventListener('click', () => {
+	//If the user clicks on the input element, display the list element
 	list.style.display = 'block';
 	
 });
