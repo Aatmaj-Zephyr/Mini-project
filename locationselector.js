@@ -1,7 +1,8 @@
 // Get references to the input and list elements
-const input = document.querySelector('.dropdown-input');
-const list = document.querySelector('.dropdown-list');
-
+const input = document.getElementById("ddinput")
+const list = document.getElementById("ddmenu")
+console.log(input)
+console.log(list)
 // Load the options from a text file
 fetch('locations.txt')
 	.then(response => response.text())
@@ -26,10 +27,11 @@ fetch('locations.txt')
 
 // Add event listener for input changes
 input.addEventListener('input', () => {
+    console.log("input changed  ")
 	// Get the search term and filter the options
 	const term = input.value.toLowerCase();
 	const items = list.querySelectorAll('.dropdown-item');
-	
+	console.log(items);
 	items.forEach(item => {
 		const text = item.textContent.toLowerCase();
 		if (text.indexOf(term) === -1) {

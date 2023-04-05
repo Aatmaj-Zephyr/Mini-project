@@ -1,49 +1,101 @@
 <!-- event page -->
 <html>
-  <!-- Select2 CSS --> 
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" /> 
+<!-- Select2 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 
-<!-- jQuery --> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<!-- Select2 JS --> 
+<!-- Select2 JS -->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
-    <link rel="stylesheet" href="eventPage.css">
-    <body class="newEventPage">
-        <div class="titleFrame">
-            <div class="titleText">
-                Title
-            </div>
-            <input type="text" maxlength="10" class="titleTextBox">
-        </input>
-        </div>
-        <div class="sendToFrame">
-          <div id="dropdown" class="dropdown">
-            <input type="text" id="ddinput" class="dropdown-input" placeholder="Search...">
-            <ul id="ddmenu" class="dropdown-list"></ul>
-          </div>
-          <script src="locationselector.js"></script>
-        
-        </div>
-    </body>
+<link rel="stylesheet" href="eventPage.css">
+
+<body class="newEventPage">
+  <span class="Heading">New Event</span>
+  <span class="titleText">
+    Title
+  </span>
+  <input type="text" maxlength="10" class="titleTextBox"></input>
+
+  <span class="titleText">
+    Location
+  </span>
+
+  <div id="dropdown" class="dropdown">
+    <input type="text" id="ddinput" class="dropdown-input" placeholder="Search...">
+    <ul id="ddmenu" class="dropdown-list"></ul>
+  </div>
+  <script src="locationselector.js"></script>
+
+
+
+  <span class="titleText">
+    No of People
+  </span>
+  <input type="number" class="number"></input>
+
+  <span class="titleText">
+    Day
+  </span>
+  <select class="titleTextBox">
+    <option value="item1">Today</option>
+    <option value="item2">Tomorrow</option>
+  </select>
+
+  <span class="titleText">
+    Start Time
+  </span>
+  <div class="time">
+    <input type="number" class="number2"></input>
+    <span class="txt">
+      Hr
+    </span>
+    <input type="number" class="number2"></input>
+    <span class="txt">
+      Min
+    </span>
+  </div>
+
+
+  <span class="titleText">
+    End Time
+  </span>
+  <div class="time">
+    <input type="number" class="number2"></input>
+    <span class="txt">
+      Hr
+    </span>
+    <input type="number" class="number2"></input>
+    <span class="txt">
+      Min
+    </span>
+  </div>
+  <div class="addEventButton" onclick="test()">
+    <div class="addEventButtonText">
+    ADD EVENT
+</div>
+</div>
+</body>
+
 <script>
-    window.addEventListener('load', () => {
-      registerSW();
-    });
- 
-    // Register the Service Worker
-    async function registerSW() {
-      if ('serviceWorker' in navigator) {
-        try {
-          await navigator
-                .serviceWorker
-                .register('serviceworker.js');
-        }
-        catch (e) {
-          console.log('SW registration failed');
-        }
+  window.addEventListener('load', () => {
+    registerSW();
+  });
+
+  // Register the Service Worker
+  async function registerSW() {
+    if ('serviceWorker' in navigator) {
+      try {
+        await navigator
+          .serviceWorker
+          .register('serviceworker.js');
+      }
+      catch (e) {
+        console.log('SW registration failed');
       }
     }
- </script>
+  }
+</script>
+
 </html>
