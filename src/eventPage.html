@@ -2,43 +2,48 @@
 <html>
 <!-- Select2 CSS -->
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script> 
+<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js "></script>
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <!-- Select2 JS -->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-
-<link rel="stylesheet" href="eventPage.css">
+<script src="./index.js"></script>
+<link rel="stylesheet" href="./eventPage.css">
 
 <body class="newEventPage">
+  <span id="pageID" style="display: none;">eventPage</span>
   <span class="Heading">New Event</span>
   <span class="titleText">
     Title
   </span>
-  <input type="text" maxlength="10" class="titleTextBox"></input>
+  <input type="text" maxlength="10" id="name" class="titleTextBox"></input>
 
   <span class="titleText">
     Location
   </span>
 
   <div id="dropdown" class="dropdown">
-    <input type="text" id="ddinput" class="dropdown-input" placeholder="Search...">
+    <input type="text" id="location" class="dropdown-input" placeholder="Search...">
     <ul id="ddmenu" class="dropdown-list"></ul>
   </div>
-  <script src="locationselector.js"></script>
+  <script src="./locationselector.js"></script>
 
 
 
   <span class="titleText">
     No of People
   </span>
-  <input type="number" class="number"></input>
+  <input type="number" id="playersNeeded" class="number"></input>
 
   <span class="titleText">
     Day
   </span>
-  <select class="titleTextBox">
+  <select id="day" class="titleTextBox">
     <option value="item1">Today</option>
     <option value="item2">Tomorrow</option>
   </select>
@@ -47,11 +52,11 @@
     Start Time
   </span>
   <div class="time">
-    <input type="number" class="number2"></input>
+    <input id="sthr" type="number" class="number2"></input>
     <span class="txt">
       Hr
     </span>
-    <input type="number" class="number2"></input>
+    <input id="stmin" type="number" class="number2"></input>
     <span class="txt">
       Min
     </span>
@@ -62,16 +67,16 @@
     End Time
   </span>
   <div class="time">
-    <input type="number" class="number2"></input>
+    <input id="ethr" type="number" class="number2"></input>
     <span class="txt">
       Hr
     </span>
-    <input type="number" class="number2"></input>
+    <input id="etmin" type="number" class="number2"></input>
     <span class="txt">
       Min
     </span>
   </div>
-  <div class="addEventButton" onclick="test()">
+  <div class="addEventButton" onclick="addEventToDBFromHTML()">
     <div class="addEventButtonText">
     ADD EVENT
 </div>

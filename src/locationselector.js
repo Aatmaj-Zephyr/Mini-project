@@ -1,5 +1,5 @@
 // Get references to the input and list elements
-const input = document.getElementById("ddinput")
+const input = document.getElementById("location")
 const list = document.getElementById("ddmenu")
 console.log(input)
 console.log(list)

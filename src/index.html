@@ -11,6 +11,8 @@
     // on load of the window, call the function firebaseConfigure();
     window.addEventListener("load", (event) => {
         firebaseConfigure();
+        fetchFromFireBase();
+        
     });
 </script>
 <link rel="manifest" href="/Mini-project/manifest.json" />     
@@ -23,7 +25,7 @@
 
     <hr>
 
-    <div class="addEventButton" onclick="test()">
+    <div class="addEventButton" onclick="window.location.href='./eventPage.html'">
         <div class="addEventButtonText">
         ADD EVENT
     </div>
