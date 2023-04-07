@@ -24,7 +24,7 @@ self.addEventListener("fetch", function (event) {
 
 
   
-});
+}); 
 
 self.addEventListener('sync', event => {
   if (event.tag === 'unique-tag-name') {

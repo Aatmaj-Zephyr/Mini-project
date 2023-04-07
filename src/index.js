@@ -378,9 +378,7 @@ function displayNewEvent(time, title, players, playersNeeded, location, eventID)
         "   \
               <div class=\" notificationClass"+ eventID + "\"   onclick=\" onEventClick(" + eventID + ")\" > \
               <div class=\" notificationsSport" + "\" >                                                            \
-                  <div class=\" heartVector\" >                                                           \
-                      <i class=\"fa fa-heart\" style=\"color:#fa0303; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;\"></i>\
-                  </div>                                                          \
+                                                                         \
                                                                             \
                   <div class=\" timeSmallDisplay\" id = \"timeOfEvent"+ eventID + "\" >                                                          \
                       "+ time + "                                                       \

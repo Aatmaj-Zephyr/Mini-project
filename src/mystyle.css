@@ -4,13 +4,12 @@
 
 
     box-sizing: content-box;
-
+    width:100%;
 
     
    
 
-    background: linear-gradient(168.7deg, #E2FFFA 0%, #FDFDFD 101.15%);
-    border: 1px solid #000000;
+    
 }
 
 .classNotifications {
@@ -21,14 +20,15 @@
     margin-left: auto;
     margin-right: auto;
     position: relative;
-    width: 325px;
+    
+    width:80%;
+    height:60%;
     
     top: 18px;
     padding-bottom: 9px;
-
-    background: #FFFFFF;
-    border: 1px solid #000000;
-    border-radius: 10px;
+    background: linear-gradient(168.7deg, #E2FFFA 0%, #FDFDFD 101.15%);
+    
+    
 }
 
 .notificationsSport {
@@ -38,15 +38,15 @@
     box-sizing: border-box;
 
     position: relative;
-    width: 306px;
-    height: 110px;
-    left: 9px;
+    width: 100%;
+    height: 20%;
+
     
-    margin-top: 7px;
+    margin-top: 7%;
     background: linear-gradient(90deg, #4EFF5F 23.08%, #FFFFFF 100%);
     border: 1px solid #000000;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
+    border-radius: 30px;
     animation-name: example;
   animation-duration: 2s;
   animation-iteration-count: 1;
@@ -55,19 +55,6 @@
     0%   { left:80px;}
     100% {left:9px;}
   }
-.heartVector {
-    /*heart Vector */
-
-
-    position: absolute;
-    left: 90.52%;
-    right: 6.21%;
-    top: 52.73%;
-    bottom: 38.18%;
-
-
-
-}
 
 .likesCountSmallDisplay {
     /* 4 */
@@ -95,15 +82,15 @@
 
 
     position: absolute;
-    width: 139px;
+    width: 80%;
     height: 40px;
-    left: 27px;
-    top: 81px;
+    left: 7%;
+    top: 60%;
 
     font-family: 'Lucida Handwriting';
     font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
+    font-weight: 70px;
+    font-size: 48px;
     line-height: 28px;
 
     color: #000000;
@@ -114,16 +101,17 @@
 
 
     position: absolute;
-    width: 65px;
+    width: 20%;
     height: 40px;
-    left: 230px;
-    top: 70px;
+    left: 70%;
+    top: 60%;
 
     font-family: 'Lucida Handwriting';
     font-style: normal;
     font-weight: 700;
-    font-size: 25px;
+    font-size: 96px;
     line-height: 40px;
+    text-align: right;
 
     color: #000000;
 }
@@ -146,16 +134,16 @@
     /* BASKETBALL */
 
 
-    position: absolute;
+    position: relative;
     width: 224px;
     height: 46px;
-    left: 63px;
-    top: 6px;
+    left: 7%;
+    top: 10%;
 
     font-family: 'Lucida Handwriting';
     font-style: normal;
-    font-weight: 700;
-    font-size: 30px;
+    font-weight: 700px;
+    font-size: 96px;
     line-height: 46px;
     /* identical to box height */
 
@@ -167,13 +155,12 @@
     /* Line 2 */
 
 
-    position: absolute;
-    width: 195px;
+    position: relative;
+    width: 70%;
     height: 0px;
-    left: 63px;
-    top: 52px;
-
-    border: 1px solid #000000;
+    left: 7%;
+    top: 17%;
+    border: 2px solid #000000;
 }
 
 .sportTag {
@@ -192,51 +179,55 @@
     font-size: 17px;
     line-height: 23px;
     /* identical to box height */
-
+ 
 
     color: #000000;
 
 }
 .addEventButton{
     /* Rectangle 2 */
-
-
-box-sizing: content-box;
-
-position: relative;
-width: 288px;
-height: 72px;
-margin-left: auto;
+  
+  
+  box-sizing: content-box;
+  position: absolute;
+  top: 80%;
+  left: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 10%;
+  margin-left: auto;
     margin-right: auto;
-top: 200px;
-
-background: #7BEFFF;
-border: 1px solid #000000;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-border-radius: 25px;
-}
-.addEventButtonText{
+  margin-top: 15%;
+  
+  background: #7BEFFF;
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 50px;
+  }
+  .addEventButtonText{
     /* ADD EVENT */
-
-
-position: absolute;
-width: 203px;
-height: 46px;
-left: 55px;
-top: 13px;
-
-font-family: 'Lucida Handwriting';
-font-style: normal;
-font-weight: 700;
-font-size: 30px;
-line-height: 46px;
-/* identical to box height */
-
-
-color: #000000;
-
-
-}
+  
+  
+  
+  top:50%;
+  left: 50%;
+  
+  
+  
+  font-family: 'Lucida Handwriting';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 78px;
+  line-height: 46px;
+  /* identical to box height */
+  
+  
+  color: #000000;
+  
+  
+  }
 .centered{
     position: relative;
     left: calc(50% - 36%/2);
