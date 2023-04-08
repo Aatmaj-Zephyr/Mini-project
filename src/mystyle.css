@@ -1,269 +1,242 @@
 .kjscePageBody {
+	/* KJSCE page */
 
-    /* KJSCE page */
-
-
-    box-sizing: content-box;
-    width:100%;
-
-    
-   
-
-    
+	box-sizing: content-box;
+	width: 100%;
 }
 
 .classNotifications {
-    /* Class notifications */
+	/* Class notifications */
 
-   
-    box-sizing: content-box;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    
-    width:80%;
-    height:60%;
-    
-    top: 18px;
-    padding-bottom: 9px;
-    background: linear-gradient(168.7deg, #E2FFFA 0%, #FDFDFD 101.15%);
-    
-    
+	box-sizing: content-box;
+
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	height: 100%;
+	justify-items: center;
+
+	top: 18px;
+	padding-bottom: 3%;
+	background-color: #f7f7f700;
 }
 
 .notificationsSport {
-    /* Class notifications sport button */
+	/* Class notifications sport button */
 
+	box-sizing: border-box;
 
-    box-sizing: border-box;
+	position: relative;
+	width: 100%;
+	height: 80%;
+	padding: 10%;
 
-    position: relative;
-    width: 100%;
-    height: 20%;
-
-    
-    margin-top: 7%;
-    background: linear-gradient(90deg, #4EFF5F 23.08%, #FFFFFF 100%);
-    border: 1px solid #000000;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 30px;
-    animation-name: example;
-  animation-duration: 2s;
-  animation-iteration-count: 1;
+	margin: 10%;
+	background: linear-gradient(90deg, #4eff5f 23.08%, #ffffff 100%);
+	border: 1px solid #000000;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 30px;
+	animation-name: example;
+	animation-duration: 2s;
+	animation-iteration-count: 1;
 }
 @keyframes example {
-    0%   { left:80px;}
-    100% {left:9px;}
-  }
+	0% {
+		left: 80px;
+	}
+	100% {
+		left: 9px;
+	}
+}
 
 .likesCountSmallDisplay {
-    /* 4 */
+	/* 4 */
 
+	position: absolute;
+	width: 10px;
+	height: 23px;
+	left: 260px;
+	top: 52px;
 
-    position: absolute;
-    width: 10px;
-    height: 23px;
-    left: 260px;
-    top: 52px;
+	font-family: "Lucida Handwriting";
+	font-style: normal;
+	font-weight: 700;
+	font-size: 15px;
+	line-height: 23px;
+	/* identical to box height */
 
-    font-family: 'Lucida Handwriting';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 23px;
-    /* identical to box height */
-
-
-    color: #000000;
+	color: #000000;
 }
 
 .timeSmallDisplay {
-    /* 4:15-5:15 */
+	/* 4:15-5:15 */
 
+	position: absolute;
+	width: 80%;
+	height: 40px;
+	left: 7%;
+	top: 60%;
 
-    position: absolute;
-    width: 80%;
-    height: 40px;
-    left: 7%;
-    top: 60%;
+	font-family: "Lucida Handwriting";
+	font-style: normal;
+	font-weight: 70px;
+	font-size: 48px;
+	line-height: 28px;
 
-    font-family: 'Lucida Handwriting';
-    font-style: normal;
-    font-weight: 70px;
-    font-size: 48px;
-    line-height: 28px;
-
-    color: #000000;
+	color: #000000;
 }
 
 .playersSmallDisplay {
-    /* 7/10 */
+	/* 7/10 */
 
+	position: absolute;
+	width: 20%;
+	height: 40px;
+	left: 70%;
+	top: 60%;
 
-    position: absolute;
-    width: 20%;
-    height: 40px;
-    left: 70%;
-    top: 60%;
+	font-family: "Lucida Handwriting";
+	font-style: normal;
+	font-weight: 700;
+	font-size: 96px;
+	line-height: 40px;
+	text-align: right;
 
-    font-family: 'Lucida Handwriting';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 96px;
-    line-height: 40px;
-    text-align: right;
-
-    color: #000000;
+	color: #000000;
 }
 
 .sportIcon {
-    /* Soccer Ball */
+	/* Soccer Ball */
 
+	position: absolute;
+	width: 54px;
+	height: 54px;
+	left: 9px;
+	top: 2px;
 
-    position: absolute;
-    width: 54px;
-    height: 54px;
-    left: 9px;
-    top: 2px;
-
-    
-    background-size: 54px 54px;
+	background-size: 54px 54px;
 }
 
 .titleSmall {
-    /* BASKETBALL */
+	/* BASKETBALL */
 
+	position: absolute;
+	width: 100%;
+	height: 46px;
+	left: 7%;
+	top: 10%;
 
-    position: relative;
-    width: 224px;
-    height: 46px;
-    left: 7%;
-    top: 10%;
+	font-family: "Lucida Handwriting";
+	font-style: normal;
+	font-weight: 700px;
+	font-size: 96px;
+	line-height: 46px;
+	/* identical to box height */
 
-    font-family: 'Lucida Handwriting';
-    font-style: normal;
-    font-weight: 700px;
-    font-size: 96px;
-    line-height: 46px;
-    /* identical to box height */
-
-
-    color: #000000;
+	color: #000000;
 }
 
 .horizontalLine {
-    /* Line 2 */
+	/* Line 2 */
 
-
-    position: relative;
-    width: 70%;
-    height: 0px;
-    left: 7%;
-    top: 17%;
-    border: 2px solid #000000;
+	position: absolute;
+	width: 70%;
+	height: 0px;
+	left: 7%;
+	top: 40%;
+	border: 2px solid #000000;
 }
 
 .sportTag {
-    /* Sport */
+	/* Sport */
 
+	position: absolute;
+	width: 47px;
+	height: 23px;
+	left: 13px;
+	top: 52px;
 
-    position: absolute;
-    width: 47px;
-    height: 23px;
-    left: 13px;
-    top: 52px;
+	font-family: "Monaco";
+	font-style: italic;
+	font-weight: 700;
+	font-size: 17px;
+	line-height: 23px;
+	/* identical to box height */
 
-    font-family: 'Monaco';
-    font-style: italic;
-    font-weight: 700;
-    font-size: 17px;
-    line-height: 23px;
-    /* identical to box height */
- 
-
-    color: #000000;
-
+	color: #000000;
 }
-.addEventButton{
-    /* Rectangle 2 */
-  
-  
-  box-sizing: content-box;
-  position: absolute;
-  top: 80%;
-  left: 10%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 80%;
-  height: 10%;
-  margin-left: auto;
-    margin-right: auto;
-  margin-top: 15%;
-  
-  background: #7BEFFF;
-  border: 1px solid #000000;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  border-radius: 50px;
-  }
-  .addEventButtonText{
-    /* ADD EVENT */
-  
-  
-  
-  top:50%;
-  left: 50%;
-  
-  
-  
-  font-family: 'Lucida Handwriting';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 78px;
-  line-height: 46px;
-  /* identical to box height */
-  
-  
-  color: #000000;
-  
-  
-  }
-.centered{
-    position: relative;
-    left: calc(50% - 36%/2);
-    top: calc(50% - 17%/2 );
+.addEventButton {
+	/* Rectangle 2 */
+
+	box-sizing: content-box;
+	position: fixed;
+	top: 80%;
+	left: 70%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 250px;
+	height: 250px;
+
+	margin-top: 15%;
+
+	background: #7befff;
+	border: 1px solid #000000;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+	border-radius: 250px;
+}
+.addEventButtonText {
+	/* ADD EVENT */
+
+	width: 100%;
+	height: 100%;
+	font-family: "Lucida Handwriting";
+	font-style: normal;
+	font-weight: 700;
+	font-size: 200px;
+	line-height: 210px;
+	text-align: center;
+
+	vertical-align: middle;
+	/* identical to box height */
+
+	color: #000000;
+}
+.centered {
+	position: relative;
+	left: calc(50% - 36% / 2);
+	top: calc(50% - 17% / 2);
 }
 
-.outerProgressBar{
-    /* Frame 26 */
+.outerProgressBar {
+	/* Frame 26 */
 
+	box-sizing: border-box;
+	width: 100%;
 
-box-sizing: border-box;
-width: 100%;
+	position: relative;
+	width: 70%;
+	height: 5%;
+	left: 20%;
+	top: 50%;
 
-position: relative;
-width: 70%;
-height: 5%;
-left: 20%;
-top: 50%;
-
-background: #000000;
-border: 1px solid #000000;
-border-radius: 30px;
+	background: #000000;
+	border: 1px solid #000000;
+	border-radius: 30px;
 }
-.innerProgressBar{
-    /* Frame 24 */
+.innerProgressBar {
+	/* Frame 24 */
 
+	box-sizing: border-box;
 
-box-sizing: border-box;
+	position: absolute;
+	width: 10%;
+	height: 100%;
+	left: 0px;
+	top: 0px;
 
-position: absolute;
-width: 10%;
-height: 100%;
-left: 0px;
-top: 0px;
-
-background: linear-gradient(90deg, #65FF74 41.71%, #FCFCFC 98.88%);
-border: 1px solid #000000;
-border-radius: 20px 20px 20px 20px;
+	background: linear-gradient(90deg, #65ff74 41.71%, #fcfcfc 98.88%);
+	border: 1px solid #000000;
+	border-radius: 20px 20px 20px 20px;
 }

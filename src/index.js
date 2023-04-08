@@ -388,9 +388,9 @@ function displayNewEvent(time, title, players, playersNeeded, location, eventID)
                   </div>                                                                          \
                   <div class=\" "+ "sport" + "Icon\" >                                                         \
                   </div>                                                              \
-                  <div class=\" titleSmall\" id = \"titleOfEvent"+ eventID + "\" >                                                            \
+                  <span class=\" titleSmall\" id = \"titleOfEvent"+ eventID + "\" >                                                            \
                       "+ title.toUpperCase() + "                                                          \
-                  </div>                                                          \
+                  </span>                                                          \
                   <div class=\" horizontalLine\" >                                                            \
                   </div>                                                          \
                                                                           \
