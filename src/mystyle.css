@@ -3,6 +3,7 @@
 
 	box-sizing: content-box;
 	width: 100%;
+    background-color: #f0f0f0;
 }
 
 .classNotifications {
@@ -17,8 +18,8 @@
 	height: 100%;
 	justify-items: center;
 
-	top: 18px;
-	padding-bottom: 3%;
+	
+
 	background-color: #f7f7f700;
 }
 
@@ -31,23 +32,28 @@
 	width: 100%;
 	height: 80%;
 	padding: 10%;
+    left: 2.5%;
 
 	margin: 10%;
-	background: linear-gradient(90deg, #4eff5f 23.08%, #ffffff 100%);
-	border: 1px solid #000000;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	border-radius: 30px;
+    margin-top: 12%;
+    margin-bottom: 12%;
+	background: linear-gradient(90deg, #FAFF00 23.08%, #FFFFFF 100%);
+	border: 4px solid #484848; 
+	box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.25);
+	border-radius: 50px;
 	animation-name: example;
-	animation-duration: 2s;
+	animation-duration: 5s;
 	animation-iteration-count: 1;
 }
 @keyframes example {
-	0% {
-		left: 80px;
-	}
-	100% {
-		left: 9px;
-	}
+	from {
+        opacity: 0;
+        transform: translateX(0px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
 }
 
 .likesCountSmallDisplay {
@@ -59,7 +65,6 @@
 	left: 260px;
 	top: 52px;
 
-	font-family: "Lucida Handwriting";
 	font-style: normal;
 	font-weight: 700;
 	font-size: 15px;
@@ -81,10 +86,10 @@
 	font-family: "Lucida Handwriting";
 	font-style: normal;
 	font-weight: 70px;
-	font-size: 48px;
+	font-size: 64px;
 	line-height: 28px;
 
-	color: #000000;
+	color: #909090;
 }
 
 .playersSmallDisplay {
@@ -96,14 +101,14 @@
 	left: 70%;
 	top: 60%;
 
-	font-family: "Lucida Handwriting";
+	font-family: "Roboto";
 	font-style: normal;
 	font-weight: 700;
 	font-size: 96px;
 	line-height: 40px;
 	text-align: right;
 
-	color: #000000;
+	color: #0648ff;
 }
 
 .sportIcon {
@@ -127,7 +132,7 @@
 	left: 7%;
 	top: 10%;
 
-	font-family: "Lucida Handwriting";
+    font-family: 'Comic Sans MS', cursive;
 	font-style: normal;
 	font-weight: 700px;
 	font-size: 96px;
@@ -171,7 +176,7 @@
 
 	box-sizing: content-box;
 	position: fixed;
-	top: 80%;
+	top: 75%;
 	left: 70%;
 	display: flex;
 	align-items: center;
