@@ -18,8 +18,8 @@
 			
 		</script>
 	</head>
-	<div class="canvas">
-	<div class="e10_2">
+	
+	<div class="background">
 		<div class="sportTile">
 			<span class="e10_7" id="sportName">BASKETBALL </span>
 
@@ -46,16 +46,16 @@
 				>
 			
 			
-			<span class="playersText">Players:</span>
+			<span class="playersText emogi">👨‍👧‍👧</span>
 
 		</div>
-		<div class="e10_35"  onclick="goBack()"></div>
-		<span class="e10_36">I’m OUT</span>
-		<div class="e10_32"  onclick="considerIn(localStorage.getItem('selectedEvent'),0)"></div>
-		<span class="e10_33">I’m IN</span>
+		<div class="e10_35"  onclick="goBack()"> <span class="inButtonText">I’m OUT</span></div>
+		
+		<div class="e10_32"  onclick="considerIn(localStorage.getItem('selectedEvent'),0)"><span class="inButtonText">I’m IN</span></div>
+		
 
-		<div class="e10_38" onclick="considerInIf(localStorage.getItem('selectedEvent'))"></div>
-		<span class="e10_39" >I’m IN if...</span>
+		<div class="e10_38" onclick="considerInIf(localStorage.getItem('selectedEvent'))"><span class="inButtonText" >I’m IN if...</span></div>
+		
 		
 		
 		
@@ -68,7 +68,5 @@
 		
 		
 	</div>
-	<script>
-		
-	</script>
+	
 </html>
