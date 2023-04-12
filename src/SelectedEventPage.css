@@ -66,6 +66,7 @@
 	height:55px;
 	position:absolute;
 	left:25%;
+	padding-top: 5%;
 	top:47%;
 	font-family: 'Comic Sans MS', cursive;
 
@@ -105,6 +106,7 @@
 	height:37px;
 	position:absolute;
 	left: 10%;
+	padding-top: 5%;
 	top:47%;
 	    font-family: 'Comic Sans MS', cursive;
 
@@ -412,6 +414,7 @@
 	width:40px;
 	height:40px;
 	position:absolute;
+	padding-bottom: 5%;
 	left:105%;
 	top:-10%;
 	font-size: 72px;
@@ -420,6 +423,7 @@
 	width:40px;
 	height:40px;
 	position:absolute;
+	padding-top: 5%;
 	left:105%;
 	top:50%;
 	font-size: 72px;
