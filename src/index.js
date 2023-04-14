@@ -6,7 +6,7 @@ window.addEventListener('load', () => {
     localStorage.setItem("ifNum", 5);
 
     /****** */
-    // registerSW();
+     registerSW();
     //stopped for login. Else register immediately
 
 
@@ -119,6 +119,9 @@ function processData(data) {
     */
 
 
+    //Remove expired events by checking date and time of event
+    checkTime(data);
+
 
     for (let key in data) {
         newEvents.push(key);
@@ -171,7 +174,7 @@ function processData(data) {
         console.log("Current id" + key);
         console.log(obj);
         console.log("Name of the event corresponsing to the id" + obj.Name);
-
+        
         displayNewEvent(obj.Time, obj.Name, obj.playersAcceptance, obj.playersNeeded, obj.Location, key)
     }
     );
@@ -189,6 +192,49 @@ function processData(data) {
     console.log("Length of the data is " + data.length);
 }
 
+function checkTime(data) {
+    Object.keys(data).forEach(key => 
+        {
+        obj = data[key];
+        console.log("\nCheking time for current id " + key);
+        var time = obj.Time;
+        console.log("Time of the event corresponsing to the id " + time);
+
+        //convert time string to end time
+        var endTime = time.split("-")[1]; // get end time
+        
+            
+        //get current time
+        const now = new Date(); // create a new Date object with the current date and time
+        const hours = now.getHours(); // get the current hour (0-23)
+        const minutes = now.getMinutes(); // get the current minute (0-59)
+
+       
+        console.log(`The current time is ${hours}:${minutes}`); // output the current time in the console
+        
+            endHrs= parseInt(endTime.split(":")[0]);
+            endMin=parseInt(endTime.split(":")[1]);
+
+        //convert clock formats to 24 hr
+        if(endHrs<7){
+            endHrs= endHrs + 12;
+        }
+
+        console.log("Event ends on "+endHrs+":"+endMin); 
+
+        // check if time exeeds current time only hours. Remove event
+        if( endHrs < hours ) {
+
+            
+            console.log("Time of the event is over...");
+            console.log("Deleting event with id " + key);
+            removeFromDB(key);
+            
+        }
+    }
+    );
+    
+}
 
 function onEventClick(a) {
     console.log("Event no " + a + " Was selected");
