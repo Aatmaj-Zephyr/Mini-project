@@ -430,7 +430,7 @@ function displayNewEvent(time, title, players, playersNeeded, location, eventID)
                       "+ time + "                                                       \
                   </div>                                                          \
                   <div class=\" playersSmallDisplay\" id = \"playersNeededForEvent"+ eventID + "\">                                                           \
-                    "+ playersNeeded + "                                                        \
+                    "+ players[0]+"/"+playersNeeded + "                                                        \
                   </div>                                                                          \
                   <div class=\" "+ "sport" + "Icon\" >                                                         \
                   </div>                                                              \
