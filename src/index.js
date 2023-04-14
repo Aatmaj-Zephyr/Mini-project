@@ -539,6 +539,7 @@ function loadSite() {
     addEventReference.once('value', (snapshot) => {
         currplayers = snapshot.val().playersNeeded;
         currtitle = snapshot.val().Name;
+        curracceptplayers = snapshot.val().playersAcceptance[0];
         currloc = snapshot.val().Location;
         currtime = snapshot.val().Time;
 
@@ -546,7 +547,7 @@ function loadSite() {
         document.getElementById("sportName").innerHTML = currtitle;
         document.getElementById("location").innerHTML = currloc;
         document.getElementById("time").innerHTML = currtime;
-        document.getElementById("players").innerHTML = currplayers;
+        document.getElementById("players").innerHTML = curracceptplayers+"/"+currplayers; //need algorithm here
 
     });
 
