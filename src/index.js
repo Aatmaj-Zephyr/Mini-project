@@ -562,7 +562,8 @@ function goBack() {
  * data.
  */
 
-function loadSite() {
+
+function loadSite() { //only for eventPage ideally
     itemID = localStorage.getItem("selectedEvent");
     console.log(itemID);
     //get data from firebase
@@ -570,6 +571,12 @@ function loadSite() {
     let currplayers;
     let currtitle;
 
+   /* The below code is fetching data from a Firebase database using the `once()` method and setting
+   the values of certain HTML elements based on the fetched data. It retrieves the number of players
+   needed, the name of the event, the number of players who have accepted the event, the location,
+   time, and date of the event. It then sets the innerHTML of certain HTML elements to display this
+   information. Additionally, it checks the date of the event and sets the innerHTML of another HTML
+   element to display "Today" or "Tomorrow" accordingly. */
     addEventReference.once('value', (snapshot) => {
         currplayers = snapshot.val().playersNeeded;
         currtitle = snapshot.val().Name;
@@ -606,6 +613,15 @@ This way only one file will need acccess to firebase
 */
 
 //checkEventsAlgo();//testing
+/**
+ * The function checks if a specified number of people can attend an event based on their acceptance
+ * status and logs a message accordingly.
+ * @param playersAcceptance - an object containing the number of players who have accepted an event
+ * invitation for different numbers of expected attendees. The keys represent the number of expected
+ * attendees and the values represent the number of players who have accepted the invitation for that
+ * number of attendees.
+ * @returns the final value of the `sum` variable.
+ */
 function checkEventsAlgo(playersAcceptance){
   //  var playersAcceptance = { "0": "2", "5": "2", "3": "1" } //pass
   //  var playersAcceptance = { "0": "2", "5": "2", "4": "1" } //fail
@@ -616,6 +632,13 @@ function checkEventsAlgo(playersAcceptance){
 
     //algo
     var sum = 0;
+
+   /* The below code is iterating through an object called `playersAcceptance` using a `for...in` loop.
+   It is calculating the sum of the values in the object and checking if the sum is greater than or
+   equal to the key. If the sum is greater than or equal to the key, it logs a message saying that
+   the specified number of people are coming. If the sum is less than the key, it logs a message
+   saying that it is not possible for the specified number of people to come. The code also resets
+   the sum if the specified number of people cannot come. */
     for (var key in playersAcceptance) {
         sum=sum+parseInt(playersAcceptance[key]);
         if(sum>=key)
