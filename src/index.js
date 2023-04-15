@@ -303,22 +303,18 @@ function considerIn(a, p) {
 
     const db = firebase.database();
     var playersAcceptanceReference = firebase.database().ref('Events/' + a);
-    var temp = 0;
+    var noofplayers = 0;
     playersAcceptanceReference.once('value', (snapshot) => { //change monitored only once.
         const players = snapshot.val().playersAcceptance;
         console.log(players[p]);
-        temp = players[p];
+        noofplayers = players[p];
     });
-    if (typeof temp == "undefined") {
-        //the setting doesnt exist, hence add it as new entity
-        firebase.database().ref('Events/' + a + "/playersAcceptance/" + p).set("1");
-    }
-    else {
-        temp = parseInt(temp) + 1
+
+    
+        noofplayers = parseInt(noofplayers) + 1
         //setting exists, do +1 on it.
-        //the setting doesnt exist, hence add it as new entity
-        firebase.database().ref('Events/' + a + "/playersAcceptance/" + p).set("" + temp);
-    }
+        firebase.database().ref('Events/' + a + "/playersAcceptance/" + p).set("" + noofplayers);
+    
 
     //now go back to home page
     window.location.href = "./index.html";
@@ -744,6 +740,8 @@ function checkSubscribedEvents(){
             arr.splice(key,1);
             localStorage.setItem("subscribedEvents",arr.join(","));
             console.log(localStorage.getItem("subscribedEvents"));
+
+            //send notification
 
             const notifBody = "Event " + name + " is going to happen from "+ time +" At "+loc+" So sending notification "
               const notifImg = `https://threeoakscs.org/wp-content/uploads/2018/01/cropped-android-icon-192x192.png`;
