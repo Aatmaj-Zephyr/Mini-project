@@ -1,0 +1,26 @@
+{
+  "Events": {
+    "5": {
+      "Date": 15,
+      "Location": "classroom A315",
+      "Name": "Symphony",
+      "Time": "1:30-2:30",
+      "playersAcceptance": {
+        "0": "2",
+        "5": "2",
+        "6": "1"
+      },
+      "playersNeeded": "3"
+    },
+    "6": {
+      "Date": 16,
+      "Location": "classroom B315",
+      "Name": "MassBunk",
+      "Time": "3:30-4:30",
+      "playersAcceptance": [
+        1
+      ],
+      "playersNeeded": "4"
+    }
+  }
+}

@@ -464,7 +464,7 @@ function displayNewEvent(time, title, players, playersNeeded, location, eventID)
                       "+ time + "                                                       \
                   </div>                                                          \
                   <div class=\" playersSmallDisplay\" id = \"playersNeededForEvent"+ eventID + "\">                                                           \
-                    "+ players[0]+"/"+playersNeeded + "                                                        \
+                    "+ checkEventsAlgo(players)+"/"+playersNeeded + "                                                        \
                   </div>                                                                          \
                   <div class=\" "+ "sport" + "Icon\" >                                                         \
                   </div>                                                              \
@@ -573,7 +573,7 @@ function loadSite() {
     addEventReference.once('value', (snapshot) => {
         currplayers = snapshot.val().playersNeeded;
         currtitle = snapshot.val().Name;
-        curracceptplayers = snapshot.val().playersAcceptance[0];
+        curracceptplayers = snapshot.val().playersAcceptance;
         currloc = snapshot.val().Location;
         currtime = snapshot.val().Time;
         currDate = snapshot.val().Date;
@@ -582,7 +582,7 @@ function loadSite() {
         document.getElementById("sportName").innerHTML = currtitle;
         document.getElementById("location").innerHTML = currloc;
         document.getElementById("time").innerHTML = currtime;
-        document.getElementById("players").innerHTML = curracceptplayers+"/"+currplayers; //need algorithm here
+        document.getElementById("players").innerHTML = checkEventsAlgo(curracceptplayers)+"/"+currplayers; //need algorithm here
         
         //check date (if today or not) and arrange the html accordingly.
         if(currDate == new Date().getDate())
@@ -604,3 +604,33 @@ function loadSite() {
 This way only one file will need acccess to firebase
 
 */
+
+//checkEventsAlgo();//testing
+function checkEventsAlgo(playersAcceptance){
+  //  var playersAcceptance = { "0": "2", "5": "2", "3": "1" } //pass
+  //  var playersAcceptance = { "0": "2", "5": "2", "4": "1" } //fail
+    //iterate through the object and log the values
+    for (var key in playersAcceptance) {
+        console.log("If "+key+" people come, then "+playersAcceptance[key]+" people come");
+    }
+
+    //algo
+    var sum = 0;
+    for (var key in playersAcceptance) {
+        sum=sum+parseInt(playersAcceptance[key]);
+        if(sum>=key)
+      { 
+        console.log("If "+key+" people come, then "+playersAcceptance[key]+" people come...These people are comming");
+          
+            }
+            else{
+                console.log("Not possible for "+key+" people");
+                sum=sum-parseInt(playersAcceptance[key]); //reset
+
+            }
+            console.log("Sum="+sum)    
+    }
+
+return sum;
+
+}
