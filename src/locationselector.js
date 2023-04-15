@@ -1,8 +1,8 @@
 // Get references to the input and list elements
-const input = document.getElementById("location")
-const list = document.getElementById("ddmenu")
-console.log(input)
-console.log(list)
+var LocInput = document.getElementById("location")
+var LocList = document.getElementById("ddmenu")
+console.log(LocInput)
+console.log(LocList)
 // Load the options from a text file
 fetch('locations.txt')
 	.then(response => response.text())
@@ -17,20 +17,20 @@ fetch('locations.txt')
 			li.textContent = option;
 			// Add click event listener to select option
 			li.addEventListener('click', () => {
-				input.value = option;
-				list.style.display = 'none';
+				LocInput.value = option;
+				LocList.style.display = 'none';
 			});
-			list.appendChild(li);
+			LocList.appendChild(li);
 		});
 	})
 	.catch(error => console.error(error));
 
 // Add event listener for input changes
-input.addEventListener('input', () => {
+LocInput.addEventListener('input', () => {
     console.log("input changed  ")
 	// Get the search term and filter the options
-	const term = input.value.toLowerCase();
-	const items = list.querySelectorAll('.dropdown-item');
+	const term = LocInput.value.toLowerCase();
+	const items = LocList.querySelectorAll('.dropdown-item');
 	console.log(items);
 	items.forEach(item => {
 		const text = item.textContent.toLowerCase();
@@ -43,8 +43,8 @@ input.addEventListener('input', () => {
 });
 
 // Add event listener for click to show the search bar
-input.addEventListener('click', () => {
+LocInput.addEventListener('click', () => {
 	//If the user clicks on the input element, display the list element
-	list.style.display = 'block';
+	LocList.style.display = 'block';
 	
 });

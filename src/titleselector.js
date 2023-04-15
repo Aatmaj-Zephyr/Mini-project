@@ -1,8 +1,8 @@
 // Get references to the input and list elements
-const input = document.getElementById("name")
-const list = document.getElementById("ttmenu")
-console.log(input)
-console.log(list)
+const TitleInput = document.getElementById("name")
+const TitleList = document.getElementById("ttmenu")
+console.log(TitleInput)
+console.log(TitleList)
 // Load the options from a text file
 fetch('title.txt')
 	.then(response => response.text())
@@ -17,20 +17,20 @@ fetch('title.txt')
 			li.textContent = option;
 			// Add click event listener to select option
 			li.addEventListener('click', () => {
-				input.value = option;
-				list.style.display = 'none';
+				TitleInput.value = option;
+				TitleList.style.display = 'none';
 			});
-			list.appendChild(li);
+			TitleList.appendChild(li);
 		});
 	})
 	.catch(error => console.error(error));
 
 // Add event listener for input changes
-input.addEventListener('input', () => {
+TitleInput.addEventListener('input', () => {
     console.log("input changed  ")
 	// Get the search term and filter the options
-	const term = input.value.toLowerCase();
-	const items = list.querySelectorAll('.dropdown-item');
+	const term = TitleInput.value.toLowerCase();
+	const items = TitleList.querySelectorAll('.dropdown-item');
 	console.log(items);
 	items.forEach(item => {
 		const text = item.textContent.toLowerCase();
@@ -43,8 +43,8 @@ input.addEventListener('input', () => {
 });
 
 // Add event listener for click to show the search bar
-input.addEventListener('click', () => {
+TitleInput.addEventListener('click', () => {
 	//If the user clicks on the input element, display the list element
-	list.style.display = 'block';
+	TitleList.style.display = 'block';
 	
 });
