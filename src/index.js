@@ -695,17 +695,40 @@ function subscribe(id){
 
 }
 
+/**
+ * The function checks if subscribed events have enough players to meet the requirement and sends a
+ * notification if they do.
+ */
 function checkSubscribedEvents(){
     //for every event sotred in subscribed Events local storage, check if the number of people which can come exeeds the requirement or not. If it exeeds requirement, then send notification that the event is happening
     var temp = localStorage.getItem("subscribedEvents").split(","); //important line code will give error if removed
     for (key in temp){
         id = temp[key]; //event id 
         console.log("Event " + id + "has been subscribed. ");
-        var playersData;
-        var playersNeeded;
+       
+       /* The below code is accessing the Firebase Realtime Database and retrieving the values of
+       "playersNeeded" and "playersAcceptance" from the "Events" node with the specified ID. The
+       retrieved values are then stored in the variables "playersNeeded" and "playersData",
+       respectively. */
+        
+       var playersData;
+       var playersNeeded;
+       var name;
+       var time;
+       var loc;
         firebase.database().ref('Events/' + id).once('value', (snapshot) => {
         playersNeeded = snapshot.val().playersNeeded;
-        playersData = snapshot.val().playersAcceptance;});
+        playersData = snapshot.val().playersAcceptance;
+         name = snapshot.val().Name;
+        time = snapshot.val().Time;
+        loc = snapshot.val().Location;});
+
+
+        /* The below code is checking if a certain event is going to happen based on the number of
+        players who have signed up for it. If the number of players who have signed up is greater
+        than or equal to the required number of players, then a notification is sent and the event
+        is removed from the local storage. Finally, a window alert is displayed to inform the user
+        that the event is going to happen. */
         if(checkEventsAlgo(playersData)>=playersNeeded){
             console.log("Event " + id + " is going to happen. So sending notification ");
 
@@ -714,7 +737,18 @@ function checkSubscribedEvents(){
             arr.splice(key,1);
             localStorage.setItem("subscribedEvents",arr.join(","));
             console.log(localStorage.getItem("subscribedEvents"));
+
+            const notifBody = "Event " + name + " is going to happen from "+ time +" At "+loc+" So sending notification "
+              const notifImg = `https://threeoakscs.org/wp-content/uploads/2018/01/cropped-android-icon-192x192.png`;
+            const options = {
+                body: notifBody, //body of app
+                icon: notifImg, //icon of app
+                vibrate: [200, 100, 200]
+            };
+            notify("You are invited!",options);
+
             window.alert("Event " + id + " is going to happen. So sending notification ");
+
 
     }
 }
