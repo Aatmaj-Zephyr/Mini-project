@@ -59,6 +59,7 @@ async function registerSW() {
  */
 function fetchFromFireBase() { //fetch data from firebase
 
+    registerSW();
 
     var eventsReference = firebase.database().ref('Events');
     eventsReference.on('value', (snapshot) => { //on change in value of any event in the database.....
@@ -277,7 +278,7 @@ function onEventClick(a) {
     window.location.href = "./SelectedEventPage.html";
 
     //Call the considerIn function with the parameter a and 0
-    //considerIn(a, 0)
+    //considerIn(a, 0) //testing
     // window.location.href="/eventPage.html";
 }
 
@@ -295,8 +296,8 @@ function considerIn(a, p) {
     subscribe(a); // the user is interested in the event.
 
    // prevent duplication (but later)
-    if(!localStorage.getItem("subscribedEvents").split(",").includes(id)){
-    }
+    //if(!localStorage.getItem("subscribedEvents").split(",").includes(id)){
+    //}
     //p is no of players
     //a is the id of the event (and not the number)
 
@@ -521,7 +522,10 @@ function showNotification(time, title, players, playersNeeded, location) {
 
     Notification.requestPermission().then((result) => {
         if (result === 'granted') {
-            notify(notifTitle, options)
+            notify(notifTitle, options);
+        }
+        else{
+            console.log("Permisoin mising");
         }
 
     });
@@ -678,6 +682,9 @@ return sum;
 function subscribe(id){
     //The user is interested in the event. 
     //Add the event id to the local storage array
+    if(localStorage.getItem("subscribedEvents")==null){
+        localStorage.setItem("subscribedEvents",id);
+    }
     if(localStorage.getItem("subscribedEvents")==''){
         localStorage.setItem("subscribedEvents",id);
     }
@@ -745,9 +752,19 @@ function checkSubscribedEvents(){
                 icon: notifImg, //icon of app
                 vibrate: [200, 100, 200]
             };
-            notify("You are invited!",options);
+            const notifTitle = "You are invited";
+            Notification.requestPermission().then((result) => {
+                console.log(result);
+                if (result === 'granted') {
+                    notify(notifTitle, options);
+                }
+                else{
+                    console.log("Permisoin mising");
+                }
+        
+            });
 
-            window.alert("Event " + id + " is going to happen. So sending notification ");
+            window.alert("Event " + id + " is going to happen. So sending notification "); //testing 
 
 
     }
