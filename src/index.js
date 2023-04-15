@@ -5,6 +5,9 @@ window.addEventListener('load', () => {
     //other initialization tasks
     localStorage.setItem("ifNum", 5);
 
+    checkSubscribedEvents();
+
+
     //test();
     /****** */
      registerSW();
@@ -179,6 +182,9 @@ function processData(data) {
         displayNewEvent(obj.Time, obj.Name, obj.playersAcceptance, obj.playersNeeded, obj.Location, key)
     }
     );
+
+    checkSubscribedEvents(); // check subscribed events after each change
+
     oldEvents = newEvents.copyWithin();
     localStorage.setItem("oldEventsCache", newEvents.toString()); //add to local storage
 
@@ -285,7 +291,12 @@ function onEventClick(a) {
  */
 
 function considerIn(a, p) {
-    console.log("consider in called")
+    console.log("consider in called");
+    subscribe(a); // the user is interested in the event.
+
+   // prevent duplication (but later)
+    if(!localStorage.getItem("subscribedEvents").split(",").includes(id)){
+    }
     //p is no of players
     //a is the id of the event (and not the number)
 
@@ -307,6 +318,7 @@ function considerIn(a, p) {
         //the setting doesnt exist, hence add it as new entity
         firebase.database().ref('Events/' + a + "/playersAcceptance/" + p).set("" + temp);
     }
+
     //now go back to home page
     window.location.href = "./index.html";
 }
@@ -327,6 +339,7 @@ function considerInIf(a) {
         localStorage.setItem("ifNum", 5);
         considerIn(a, localStorage.getItem("ifNum"))
     }
+    subscribe(a); // the user is interested in the event.
 }
 
 /**
@@ -495,7 +508,6 @@ function displayNewEvent(time, title, players, playersNeeded, location, eventID)
  */
 function showNotification(time, title, players, playersNeeded, location) {
     //send notification from app
-
     const notifTitle = title;
     const notifBody = `New sport` + " " + title + ' is added with ' + playersNeeded;
     const notifImg = `https://threeoakscs.org/wp-content/uploads/2018/01/cropped-android-icon-192x192.png`;
@@ -653,7 +665,57 @@ function checkEventsAlgo(playersAcceptance){
             }
             console.log("Sum="+sum)    
     }
-
 return sum;
+}
 
+/**
+ * The function adds an event ID to the local storage array if the user is interested in the event and
+ * prevents duplication.
+ * @param id - The id parameter is the unique identifier of an event that the user wants to subscribe
+ * to. It is used to add the event id to the local storage array of subscribed events.
+ */
+
+function subscribe(id){
+    //The user is interested in the event. 
+    //Add the event id to the local storage array
+    if(localStorage.getItem("subscribedEvents")==''){
+        localStorage.setItem("subscribedEvents",id);
+    }
+    else{
+        //prevent duplication 
+        if(!localStorage.getItem("subscribedEvents").split(",").includes(id)){
+       
+    localStorage.setItem("subscribedEvents", localStorage.getItem("subscribedEvents")+","+id);
+        
+        console.log(localStorage.getItem("subscribedEvents"));
+        }
+    }
+ //testing   window.alert(localStorage.getItem("subscribedEvents"));
+
+
+}
+
+function checkSubscribedEvents(){
+    //for every event sotred in subscribed Events local storage, check if the number of people which can come exeeds the requirement or not. If it exeeds requirement, then send notification that the event is happening
+    var temp = localStorage.getItem("subscribedEvents").split(","); //important line code will give error if removed
+    for (key in temp){
+        id = temp[key]; //event id 
+        console.log("Event " + id + "has been subscribed. ");
+        var playersData;
+        var playersNeeded;
+        firebase.database().ref('Events/' + id).once('value', (snapshot) => {
+        playersNeeded = snapshot.val().playersNeeded;
+        playersData = snapshot.val().playersAcceptance;});
+        if(checkEventsAlgo(playersData)>=playersNeeded){
+            console.log("Event " + id + " is going to happen. So sending notification ");
+
+            //remove from the local storage
+            var arr=  localStorage.getItem("subscribedEvents").split(",")
+            arr.splice(key,1);
+            localStorage.setItem("subscribedEvents",arr.join(","));
+            console.log(localStorage.getItem("subscribedEvents"));
+            window.alert("Event " + id + " is going to happen. So sending notification ");
+
+    }
+}
 }

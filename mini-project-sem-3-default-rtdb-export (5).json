@@ -6,8 +6,8 @@
       "Name": "Symphony",
       "Time": "1:30-2:30",
       "playersAcceptance": {
-        "0": "2",
-        "5": "2",
+        "0": "4",
+        "5": "3",
         "6": "1"
       },
       "playersNeeded": "3"
@@ -18,9 +18,20 @@
       "Name": "MassBunk",
       "Time": "3:30-4:30",
       "playersAcceptance": [
-        1
+        "2"
       ],
       "playersNeeded": "4"
+    },
+    "7": {
+      "Date": 15,
+      "Location": "B wing quadrangle",
+      "Name": "Abhiyantriki",
+      "Time": "4:30-5:30",
+      "playersAcceptance": {
+        "0": "2",
+        "6": "1"
+      },
+      "playersNeeded": "5"
     }
   }
 }
