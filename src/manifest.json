@@ -1,10 +1,10 @@
 {
 "name": "testing pwa",
 "short_name": "Mini project",
-"start_url": "/Mini-project/src/index.html",
- "id":"/Mini-project/src/index.html",
+"start_url": "/Mini-project/src/splash.html",
+"id":"/Mini-project/src/splash.html",
 "display": "standalone",
-"description": "This is the description of my mini project",
+"description": "Lets have fun!",
 "lang": "English",
 "dir": "auto",
 "scope":"/Mini-project/",
@@ -13,13 +13,13 @@
 "orientation": "any",
 "icons": [
     {
-        "src": "https://www.pwabuilder.com/assets/icons/icon_512.png",
+        "src": "./Logo.png",
         "sizes": "512x512",
         "type": "image/png",
         "purpose": "maskable"
     },
     {
-        "src": "https://threeoakscs.org/wp-content/uploads/2018/01/cropped-android-icon-192x192.png",
+        "src": "./Logo.png.png",
         "sizes": "192x192",
         "type": "image/png",
         "purpose": "any"

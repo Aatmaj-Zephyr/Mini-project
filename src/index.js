@@ -58,7 +58,6 @@ async function registerSW() {
  * This function fetches data from Firebase and processes the updated data.
  */
 function fetchFromFireBase() { //fetch data from firebase
-
     registerSW();
 
     var eventsReference = firebase.database().ref('Events');
@@ -191,12 +190,7 @@ function processData(data) {
 
 
 
-    /* The  code is iterating through an array called `data` using the `forEach` method and
-    logging each object in the array to the console. After iterating through the array, it logs the
-    length of the array to the console. */
-    data.forEach(obj => {
-        console.log(obj);
-    });
+    
     console.log("Length of the data is " + data.length);
 }
 
@@ -516,15 +510,11 @@ function showNotification(time, title, players, playersNeeded, location) {
 
     ////////////////////////////////////////////////////////////////
 
-    Notification.requestPermission().then((result) => {
-        if (result === 'granted') {
+ console.log("Sending notification ");
             notify(notifTitle, options);
-        }
-        else{
-            console.log("Permisoin mising");
-        }
+     
 
-    });
+
 
 }
 
@@ -541,6 +531,7 @@ function notify(notifTitle, options) {
         if (result === 'granted') {
             navigator.serviceWorker.ready.then(function (registration) {
                 registration.showNotification(notifTitle, options);
+                Notification.show();
             });
         }
     });

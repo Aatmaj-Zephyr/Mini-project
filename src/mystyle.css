@@ -211,10 +211,17 @@
 }
 .centered {
 	position: relative;
-	left: calc(50% - 36% / 2);
-	top: calc(50% - 17% / 2);
+	left: 20%;
+	top: 40%;
 }
-
+.LogoTitle{
+	position: relative;
+	top:5%;
+	left:25%;
+	font-size: 84px;
+	font-family: "Monaco";
+	font-style: italic;
+}
 .outerProgressBar {
 	/* Frame 26 */
 
@@ -229,7 +236,7 @@
 
 	background: #000000;
 	border: 1px solid #000000;
-	border-radius: 30px;
+	border-radius: 50px;
 }
 .innerProgressBar {
 	/* Frame 24 */
@@ -244,5 +251,5 @@
 
 	background: linear-gradient(90deg, #65ff74 41.71%, #fcfcfc 98.88%);
 	border: 1px solid #000000;
-	border-radius: 20px 20px 20px 20px;
+	border-radius: 50px;
 }
