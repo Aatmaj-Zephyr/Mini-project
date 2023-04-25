@@ -22,7 +22,7 @@ function move(i) {
                 i = 0;
                 //wait 1 seonds before redirect
                 setTimeout(() => {
-                    localStorage.setItem("User","aatmaj");
+                   // localStorage.setItem("User","aatmaj");
                     window.location.href = "./index.html";
                 }, 1000);
             } else {

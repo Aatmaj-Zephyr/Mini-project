@@ -1,0 +1,21 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+    <div style="align-items: center; justify-content: center; display: flexbox; flex-direction:column;">
+        <input id="username" type="text" placeholder="username">
+        <input id="password" type="text" placeholder="password">
+        <button id="login" type="button" onclick="login()">Login</button>
+        <script>
+            function login(){
+               localStorage.setItem("User", document.getElementById("username").value+"");
+               setTimeout(() => {
+
+                    window.location.href = "./splash.html";
+                }, 1000);
+            }
+        </script>
+    </div>
+    </body>
+</html>
