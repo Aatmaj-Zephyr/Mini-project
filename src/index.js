@@ -4,7 +4,7 @@ window.addEventListener('load', () => {
     /***** */
     //other initialization tasks
     localStorage.setItem("ifNum", 5);
-
+   
     checkSubscribedEvents();
 
 
@@ -385,7 +385,8 @@ function addEventToDB(time, name, location, playersNeeded,date) {
         Location: location,
         playersAcceptance: { "0": 1 }, //making it the default that the player who enters the event must be present
         playersNeeded: playersNeeded,
-        Date:date
+        Date:date,
+        User:localStorage.getItem('User')
     });
 }
 
@@ -587,13 +588,14 @@ function loadSite() { //only for eventPage ideally
         currloc = snapshot.val().Location;
         currtime = snapshot.val().Time;
         currDate = snapshot.val().Date;
+        curruser=snapshot.val().User;
 
         //set the element id sportName to the sport name fetched from the database
         document.getElementById("sportName").innerHTML = currtitle;
         document.getElementById("location").innerHTML = currloc;
         document.getElementById("time").innerHTML = currtime;
         document.getElementById("players").innerHTML = checkEventsAlgo(curracceptplayers)+"/"+currplayers; //need algorithm here
-        
+        document.getElementById("byuser").innerHTML = "Hosted by "+curruser  ;
         //check date (if today or not) and arrange the html accordingly.
         if(currDate == new Date().getDate())
        { document.getElementById("Day").innerHTML = "Today";}
