@@ -304,14 +304,9 @@ function considerIn(a, p) {
         noofplayers = players[p];
     });
 
-     //setting exists, do +1 on it.
-        noofplayers = parseInt(noofplayers) + 1
     
-    //else make 1
-    if(isNaN(noofplayers)){
-        noofplayers-1;
-    }
-       
+        noofplayers = parseInt(noofplayers) + 1
+        //setting exists, do +1 on it.
         firebase.database().ref('Events/' + a + "/playersAcceptance/" + p).set("" + noofplayers);
     
 
