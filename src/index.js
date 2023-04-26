@@ -309,7 +309,7 @@ function considerIn(a, p) {
     
     //else make 1
     if(isNaN(noofplayers)){
-        noofplayers-1;
+        noofplayers=1;
     }
        
         firebase.database().ref('Events/' + a + "/playersAcceptance/" + p).set("" + noofplayers);
